@@ -18,6 +18,8 @@ import {Gl} from './hover';
 })
 export class WorkComponent implements OnInit {
 
+
+
   work;
   isLoaded = false;
   id: any;
@@ -72,20 +74,8 @@ export class WorkComponent implements OnInit {
 
             this.work = data;
             this.isLoaded = true;
-
-
-            // setTimeout(() => {
-            //   this.canvas = document.querySelector('#canvas');
-            //   console.log(this.canvas, 'this.canvas)');
-            //
-            //   const scene = new Gl('../../../assets/img/work-1.jpg', this.canvas);
-            //   scene.init();
-            // }, 50);
-
-
-
-
-          } else {
+          } 
+          else {
             this.router.navigate(['/works']);
           }
         });
