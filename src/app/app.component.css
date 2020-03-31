@@ -1,0 +1,35 @@
+#main-container {
+  height: 100%;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.background-grid-line {
+  position: fixed;
+  height: 100%;
+  z-index: 1;
+}
+
+.background-grid-line-1 {
+  position: fixed;
+  height: 100%;
+  z-index: 1;
+}
+.background-grid-line-2 {
+  /*filter: drop-shadow( 0px 0px 10px rgba(0, 0, 0, 1));*/
+  position: fixed;
+  height: 100%;
+  left: 33.3%;
+  width: 33.3%;
+  z-index: 1;
+  border-right: 1px solid #161616;
+  border-left: 1px solid #161616;
+  /*background: #0f0f0f;*/
+}
+.background-grid-line-3 {
+  position: fixed;
+  height: 100%;
+  z-index: 1;;
+}

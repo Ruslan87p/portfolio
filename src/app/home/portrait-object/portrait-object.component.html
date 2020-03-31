@@ -1,0 +1,23 @@
+<div class="loader-wrapper" [@loadingAnimation]="loadingState">
+  <div class="counter">
+    <h5>Please, wait a while</h5>
+    <p #sentence></p>
+    <h1 #percentage>0%</h1>
+    <div class="line-wrapper">
+      <hr #line/>
+    </div>
+    <p></p>
+  </div>
+</div>
+
+
+
+<header class="text-intro">
+  <span [@stateLine]="stateLine" class="left-line"></span>
+  <h1 *ngIf="isLoaded"><span [@textAnimation1]="textState">Hi, my name is Ruslan</span></h1>
+  <h1 *ngIf="isLoaded"><span [@textAnimation2]="textState">& i'am a UI/UX Designer with</span></h1>
+  <h1 *ngIf="isLoaded"><span [@textAnimation3]="textState">Front-End Development skills</span></h1>
+</header>
+
+
+<div id="container" [@stateImg]="state"></div>

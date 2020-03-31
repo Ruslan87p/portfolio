@@ -1,0 +1,38 @@
+.column{
+  position: fixed;
+  height: 100vh;
+  z-index: 990;
+}
+.column-1 {
+  left: 0;
+  background: #4559c7;
+}
+.column-2 {
+  left: 33.3%;
+  background: #4559c7;
+}
+.column-3 {
+  left: 66.6%;
+  background: #4559c7;
+}
+
+.column-second-layer {
+  position: fixed;
+  height: 100vh;
+  z-index: 991;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.column-second-layer-1 {
+  left: 0;
+  background: #1d1d1d;
+}
+.column-second-layer-2 {
+  left: 33.3%;
+  background: #1d1d1d;
+}
+.column-second-layer-3 {
+  left: 66.6%;
+  background: #1d1d1d;
+}
