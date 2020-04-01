@@ -1,0 +1,142 @@
+.viewport-overlay {
+  position: fixed;
+  z-index: 10;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+/*PROGRESS*/
+.progress {
+  height: 10px;
+  width: 100%;
+  position: fixed;
+  z-index: 998;
+  top: 0;
+  left: 0;
+}
+#highlight {
+  transition: width 1500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  background: #3c4eb0;
+  height: 100%;
+  width: 0%;
+}
+.content {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  min-height: 5200px;
+  margin: 0 auto;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+}
+
+
+.colors {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.color {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  color: #000000;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.desktop-wrapper {
+  width: 100%;
+  height: auto;
+  min-height: 600px;
+  display: inline-flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  padding: 20px;
+  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("../../../assets/img/noise.gif");
+}
+.desktop-wrapper > img {
+  width: 100%;
+  max-width: 600px;
+}
+
+.devices-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  min-height: 600px;
+  margin-top: 50px;
+  padding: 20px;
+  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("../../../assets/img/noise.gif");
+
+}
+.devices-wrapper > img:nth-child(1) {
+  width: 100%;
+  max-width: 600px;
+}
+
+.mobile-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  min-height: 600px;
+  margin-top: 50px;
+  padding: 20px;
+  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("../../../assets/img/noise.gif");
+}
+
+.fonts, .technologies {
+  padding: 50px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mockup-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  overflow: hidden;
+}
+#tmp-image {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 100px;
+}
+#tmp-image2 {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 100px;
+}
+
+.next-work {
+  width: 100%;
+  height: 300px;
+  background: #4559c7;
+  color: white;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(50px + (100 - 50) * ((100vw - 320px)/ (1920 - 320)));
+}
+
+.next-work > button {
+  width: 100%;
+  height: 100%;
+}

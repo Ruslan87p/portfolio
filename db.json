@@ -1,0 +1,67 @@
+{
+  "about" : [
+    {
+      "data" : "",
+      "title" : "some comment"
+    }, {
+      "data" : "",
+      "title" : "some comment"
+    }, {
+      "data" : "",
+      "title" : "some comment"
+    }, {
+      "data" : "",
+      "title" : "some comment"
+    }, {
+      "data" : "",
+      "title" : "some comment"
+    }, {
+      "data" : "",
+      "title" : "some comment"
+    } ],
+  "home" : [
+    {
+      "obj" : "../../../assets/img/obj/hand.OBJ",
+      "text" : "json-server"
+    } ],
+  "works" : [
+    {
+      "data" : "HELLO 1",
+      "id" : 0,
+      "image" : "../../../assets/img/1.jpg",
+      "text" : "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      "title" : "Top Best Antivirus Software"
+    }, {
+      "data" : "HELLO 2",
+      "id" : 1,
+      "image" : "./src/assets/img/6.jpg",
+      "text" : "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      "title" : "Best Password Manager"
+    }, {
+      "data" : "HELLO 3",
+      "id" : 2,
+      "image" : "./src/assets/img/5.jpg",
+      "text" : "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      "title" : "New Year Card 2017"
+    }, {
+      "id" : 3,
+      "image" : "./src/assets/img/4.jpg",
+      "text" : "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      "title" : "Dashboard"
+    }, {
+      "id" : 4,
+      "image" : "./src/assets/img/3.jpg",
+      "text" : "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      "title" : "Portfolio"
+    }, {
+      "id" : 5,
+      "image" : "./src/assets/img/2.jpg",
+      "text" : "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      "title" : "Landing Page"
+    }, {
+      "id" : 6,
+      "image" : "./src/assets/img/1.jpg",
+      "text" : "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
+      "title" : "Company Web Site"
+    } ]
+}

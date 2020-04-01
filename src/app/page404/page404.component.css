@@ -1,0 +1,93 @@
+.container-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  z-index: 99;
+}
+a {
+  outline: none;
+  padding: 20px 100px;
+  border-radius: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  color: #ffffff;
+  font-size: 30px;
+  margin-top: 50px;
+  /*text-decoration: none;*/
+}
+/*GLITCH EFFECT*/
+#container {
+  position: absolute;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 20px;
+
+  /*background: url("../../assets/img/lost.png");*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: center center;*/
+   background-attachment: fixed;
+}
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+.container span {
+  font-size: calc(80px + (400 - 100) * ((100vw - 320px)/ (1920 - 320)));
+  color: whitesmoke;
+  line-height: 80%;
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  /*-webkit-text-stroke: 1px whitesmoke;*/
+}
+h1 {
+  color: whitesmoke;
+  text-transform: uppercase;
+  line-height: 20%;
+  font-size: calc(20px + (70 - 50) * ((100vw - 320px)/ (1920 - 320)));
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+}
+
+
+
+
+
+
+
+.p-canvas-webgl {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+
+  transition: all 40s ease-in-out;
+  animation: scaleAni 60s infinite alternate;
+}
+@keyframes scaleAni {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.3);
+  }
+}

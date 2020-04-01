@@ -1,0 +1,113 @@
+/*ICON MENU*/
+button {
+  display: block;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+button:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.3);
+  background-color: rgba(255, 255, 255, 0);
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  transition: all .25s ease-in-out;
+}
+button:focus {
+  outline: none;
+}
+button:focus {
+  cursor: pointer;
+}
+button.open .ham {
+  transform: translate(-50%, -50%) rotate(90deg);
+  transition-delay: 0s;
+}
+button.open .ham .top {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  transition: transform .5s ease-in-out;
+}
+button.open .ham .bottom {
+  bottom: 50%;
+  transform: translateY(50%) rotate(135deg);
+  transition: transform .5s ease-in-out;
+}
+button.open .ham .middle {
+  left: -50%;
+  width: 0;
+  transition-delay: 0s;
+}
+.ham {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all .5s ease-in-out;
+  transition-delay: 0.5s;
+}
+.ham .top,
+.ham .bottom {
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  border-radius: 1px;
+}
+.ham .top {
+  top: 3px;
+  transition: all .5s ease-in-out;
+  transition-delay: 0s;
+}
+.ham .bottom {
+  bottom: 3px;
+  transition: all .5s ease-in-out;
+  transition-delay: 0s;
+}
+.ham .middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  border-radius: 1px;
+  transition: all .5s ease-in-out;
+  transition-delay: .1s;
+}
+/*ICON MENU*/
+
+
+.header-wrapper {
+  width: 100%;
+  /*background: #4559c7;*/
+  display: flex;
+  position: fixed;
+  height: 0;
+  margin-top: 40px;
+  z-index: 9999;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header-menu-icon {
+  margin: 30px 30px 0 0;
+}
+.header-logo {
+  margin: 30px 0 0 30px;
+  width: 50px;
+  height: 50px;
+}

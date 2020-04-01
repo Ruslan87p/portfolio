@@ -1,0 +1,53 @@
+<div class="progress">
+  <div class="progress_highlight" id="highlight"></div>
+</div>
+
+<div class="viewport-overlay">
+
+  <div id="scroll-container" class="scroll-container">
+    <div class="content" id="content" @transitionAnimation>
+
+      <div class="black-square"></div>
+
+
+      <div id="planes">
+
+        <ng-template ngFor let-i="index" let-work [ngForOf]="worksList">
+          <div class="card card-{{i}}">
+
+            <div class="work" id="work">
+
+              <div class="counter">
+                <span class="id-number" @transitionAnimationDigit>0{{work.id + 1}}</span>
+                <h3 class="title" @transitionAnimationText>{{work.title}}</h3>
+                <div class="project">
+                  <p @transitionAnimationText>{{work.text}}</p>
+
+                  <a class="next-work" (click)="onClickProject(work.id)" @transitionAnimationLink>
+                    <div class="link">
+                      <span class="hover">View project</span>
+                      <svg viewBox="0 0 50.8 32.6">
+                        <line class="st0" x1="61.7" y1="8.2" x2="75.2" y2="16.2"/>
+                        <line class="st0" x1="61.7" y1="24.4" x2="75.2" y2="16.3"/>
+                        <line class="st0" x1="0.6" y1="16.3" x2="75.2" y2="16.3"/>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+
+              <div class="image" aTilt [tiltSettings]="settings">
+                <img src="{{work.image}}" alt="img">
+              </div>
+
+            </div>
+          </div>
+        </ng-template>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
