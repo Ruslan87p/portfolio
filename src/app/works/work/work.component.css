@@ -60,7 +60,7 @@
   justify-content: space-between;
   margin-top: 50px;
   padding: 20px;
-  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("http://plotkinruslan.com/assets/img/noise.gif");
+  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("https://plotkinruslan.com/assets/img/noise.gif");
 }
 .desktop-wrapper > img {
   width: 100%;
@@ -77,7 +77,7 @@
   min-height: 600px;
   margin-top: 50px;
   padding: 20px;
-  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("http://plotkinruslan.com/assets/img/noise.gif");
+  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("https://plotkinruslan.com/assets/img/noise.gif");
 
 }
 .devices-wrapper > img:nth-child(1) {
@@ -95,7 +95,7 @@
   min-height: 600px;
   margin-top: 50px;
   padding: 20px;
-  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("http://plotkinruslan.com/assets/img/noise.gif");
+  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("https://plotkinruslan.com/assets/img/noise.gif");
 }
 
 .fonts, .technologies {

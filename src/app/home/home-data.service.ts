@@ -8,11 +8,11 @@ import {map} from 'rxjs/operators';
 })
 export class HomeDataService {
 
-  baseURL = 'http://localhost:3000/home';
+  baseURL = 'https://localhost:3000/home';
   comparisonItems = [];
   data = {};
 
-  constructor(private http: HttpClient) { }
+  constructor(private https: HttpClient) { }
 
   getHomeData(): Observable<any> {
 

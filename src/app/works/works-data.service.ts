@@ -14,7 +14,7 @@ export class WorksDataService {
   comparisonItems = [];
   data;
 
-  constructor(private http: HttpClient) { }
+  constructor(private https: HttpClient) { }
 
 
 
@@ -29,7 +29,7 @@ export class WorksDataService {
     }
 
     // https://portfolio-603c5.firebaseio.com/works.json
-    return this.http.get<any[]>('https://portfolio-603c5.firebaseio.com/works.json')
+    return this.https.get<any[]>('https://portfolio-603c5.firebaseio.com/works.json')
       .pipe(map((compareItems: any) => {
           this.comparisonItems = compareItems;
 
@@ -42,7 +42,7 @@ export class WorksDataService {
 
   // https://portfolio-603c5.firebaseio.com/works/' + id + '.json
   getProduct(id: any): Observable<any> {
-    return this.http.get<any>('https://portfolio-603c5.firebaseio.com/works/' + id + '.json');
+    return this.https.get<any>('https://portfolio-603c5.firebaseio.com/works/' + id + '.json');
   }
 
 

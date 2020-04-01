@@ -368,7 +368,7 @@ class GlitchCalculation {
       cameraBack.position.set(0, 0, 100);
       cameraBack.lookAt(new THREE.Vector3());
 
-      bgImg.init('http://plotkinruslan.com/assets/img/lost.jpg', () => {
+      bgImg.init('https://plotkinruslan.com/assets/img/lost.jpg', () => {
         sceneBack.add(bgImg.obj);
         scene.add(postEffect.obj);
       });

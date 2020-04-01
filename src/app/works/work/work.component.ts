@@ -52,7 +52,7 @@ export class WorkComponent implements OnInit {
 
     // TODO show imgs by scroll on viewport
     // for (let i = 0; i < 100; i++) {
-    //   const url = 'http://via.placeholder.com/500x450?text=Image No ' + (i + 1);
+    //   const url = 'https://via.placeholder.com/500x450?text=Image No ' + (i + 1);
     //
     //   this.imageCollection[i] = {
     //     url,

@@ -123,7 +123,7 @@ export class PortraitObjectComponent implements OnInit, OnDestroy {
   
       const objectLoader = new THREE.OBJLoader();
       
-      objectLoader.load('http://plotkinruslan.com/assets/img/obj/handobj.obj', ( object ) => {
+      objectLoader.load('https://plotkinruslan.com/assets/img/obj/handobj.obj', ( object ) => {
         // called when the resource is loaded
           if (object) {
             scene.add( object );
