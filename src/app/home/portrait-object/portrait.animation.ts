@@ -3,7 +3,7 @@ import {animate, group, state, style, transition, trigger} from '@angular/animat
 // PORTRAIT
 export const portraitAnimation = trigger('stateImg', [
   state('in', style({
-    transform: 'scale(1)',
+    transform: 'translateY(0)',
     opacity: 1,
     visibility: 'visible'
   })),
@@ -11,7 +11,7 @@ export const portraitAnimation = trigger('stateImg', [
     animate('1s 300ms cubic-bezier(0.86, 0, 0.07, 1)')
   ]),
   state('out', style({
-    transform: 'scale(1.1)',
+    transform: 'translateY(50px)',
     opacity: 0,
     visibility: 'hidden'
   })),
@@ -45,13 +45,13 @@ export const portraitAnimation = trigger('stateImg', [
 // LINE
 export const lineAnimation = trigger('stateLine', [
   state('in', style({
-    width: '100%'
+    height: '100%'
   })),
   transition('in => out', [
     animate('500ms 600ms cubic-bezier(0.86, 0, 0.07, 1)')
   ]),
   state('out', style({
-    width: '0'
+    height: '0'
   })),
   transition('out => in', [
     animate('500ms 2500ms cubic-bezier(0.86, 0, 0.07, 1.2)')
@@ -91,7 +91,7 @@ export const textAnimation1 = trigger('textAnimation1', [
   ]),
   state('outText', style({
     opacity: 0,
-    top: '100px'
+    top: '300px'
   })),
   transition('outText => inText', [
     group([
@@ -108,7 +108,7 @@ export const textAnimation1 = trigger('textAnimation1', [
   transition(':enter', [
     style({
       opacity: 0,
-      top: '100px'
+      top: '300px'
     }),
     group([
       animate('1500ms 300ms cubic-bezier(.94,.01,.06,1)', style({
@@ -138,7 +138,7 @@ export const textAnimation2 = trigger('textAnimation2', [
   ]),
   state('outText', style({
     opacity: 0,
-    top: '100px'
+    top: '300px'
   })),
   transition('outText => inText', [
     group([
@@ -155,7 +155,7 @@ export const textAnimation2 = trigger('textAnimation2', [
   transition(':enter', [
     style({
       opacity: 0,
-      top: '100px'
+      top: '300px'
     }),
     group([
       animate('1500ms 400ms cubic-bezier(.94,.01,.06,1)', style({
@@ -184,7 +184,7 @@ export const textAnimation3 = trigger('textAnimation3', [
   ]),
   state('outText', style({
     opacity: 0,
-    top: '100px'
+    top: '300px'
   })),
   transition('outText => inText', [
     group([
@@ -201,7 +201,7 @@ export const textAnimation3 = trigger('textAnimation3', [
   transition(':enter', [
     style({
       opacity: 0,
-      top: '100px'
+      top: '300px'
     }),
     group([
       animate('1500ms 500ms cubic-bezier(.94,.01,.06,1)', style({

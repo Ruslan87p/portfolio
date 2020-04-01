@@ -33,10 +33,7 @@ export class AboutComponent implements OnInit {
   }
 
 
-
-
   ngOnInit() {
-
 
     const highlight = document.getElementById('highlight');
     const links = document.querySelectorAll('a');

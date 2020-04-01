@@ -13,15 +13,21 @@ export class ParallaxDirective {
   scrollY;
 
   constructor(private eleRef: ElementRef) {
-    this.initialTop = this.eleRef.nativeElement.getBoundingClientRect().top;
+      this.initialTop = this.eleRef.nativeElement.getBoundingClientRect().top;      
   }
 
 
+  
+
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
-    this.scrollY = window.scrollY;
-    this.eleRef.nativeElement.style.top = (this.initialTop - (this.scrollY * this.parallaxRatio)) + 'px';
-    this.eleRef.nativeElement.style.transition = '0.1s ease';
+    if (window.innerWidth > 700) {
+
+      this.scrollY = window.scrollY;
+      this.eleRef.nativeElement.style.top = (this.initialTop - (this.scrollY * this.parallaxRatio)) + 'px';
+      this.eleRef.nativeElement.style.transition = '0.1s ease';
+      
+    }
   }
 
 

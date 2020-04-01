@@ -10,21 +10,23 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 98;
-  width: 100%;
   text-align: left;
-  max-width: 1400px;
+  max-width: 1200px;
   padding: 0 0 0 20px;
   margin: 0;
+
+  padding: 30px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .left-line {
   position: absolute;
-  left: 5px;
-  bottom: -20px;
-  height: 3px;
-  max-width: 1400px;
+  left: 50px;
+  width: 50px;
   background: #3c4eb0;
-  margin-bottom: 10px;
 }
 
 
@@ -32,8 +34,8 @@
   padding: 0;
   margin: 0;
   color: #ffffff;
-  text-transform: uppercase;
-  /*font-family: 'Montserrat', sans-serif;*/
+  /* text-transform: uppercase; */
+  /* font-family: 'Montserrat', sans-serif; */
   font-family: 'Raleway', sans-serif;
   /*text-transform: uppercase;*/
   font-weight: 100;
@@ -59,15 +61,14 @@
 
 /* PRELOADER */
 .loader-wrapper {
+  position: absolute;
+  z-index: 9999;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 100;
-  /*linear-gradient(0deg, rgba(13, 13, 13,0.97), rgba(13, 13, 13,0.97)), */
-  background-image: url("./../../../assets/img/noise.gif");
+  background-image: url("http://plotkinruslan.com/assets/img/noise.gif");
 }
 .counter {
   width: 100%;
@@ -82,10 +83,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 40px;
-  font-weight: 400;
+  font-size: 30px;
   color: whitesmoke;
   width: 500px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
 }
 .loader-wrapper .counter h1 {
   display: flex;
@@ -94,8 +96,9 @@
   color: white;
   font-size: 100px;
   margin-top: -10px;
-  font-weight: 100;
   width: 500px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
 }
 .loader-wrapper .counter p {
   color: white;
@@ -106,9 +109,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 20px;
 }
 .loader-wrapper .counter hr {
   background: #3c4eb0;
   border: none;
-  height: 3px;
+  height: 100px;
+}
+
+
+
+
+@media screen and (max-width: 700px) {
+  .text-intro {
+    padding: 30px;
+    width: 100%;
+    top: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .text-intro > h1 {
+    line-height: 150%;
+  }
+  .left-line {
+    width: 100px;
+  }
 }

@@ -204,3 +204,30 @@ svg {
   width: 100%;
 }
 /*HOVER LINK*/
+
+
+
+
+
+
+
+@media screen and (max-width: 700px) {
+  .card {
+    margin: 0;
+    height: 90vh;
+    transform: translateY(5vh);
+  }
+  .counter {
+    width: 100%;
+  }
+  .link {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  svg {
+    width: 100px;
+  }
+}

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {MouseMoveService} from './mouse-move.service';
 
 
@@ -9,18 +9,15 @@ import {MouseMoveService} from './mouse-move.service';
 })
 export class HomeComponent implements OnInit {
 
-  svg;
-  svgRight;
-  svgLeft;
-
+  svg: any;
+  svgRight: any;
+  svgLeft: any;
   constructor() {}
 
   parallaxIt(e) {
     const svgEls = this.svg;
     new MouseMoveService(e, svgEls);
   }
-
-
 
   ngOnInit() {
 

@@ -29,11 +29,7 @@ a {
   background-repeat: no-repeat;
   background-position: center center;
   border-radius: 20px;
-
-  /*background: url("../../assets/img/lost.png");*/
-  /*background-repeat: no-repeat;*/
-  /*background-position: center center;*/
-   background-attachment: fixed;
+  background-attachment: fixed;
 }
 .content-header {
   display: flex;

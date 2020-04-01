@@ -21,6 +21,11 @@
                 <span class="id-number" @transitionAnimationDigit>0{{work.id + 1}}</span>
                 <h3 class="title" @transitionAnimationText>{{work.title}}</h3>
                 <div class="project">
+
+                  <div *ngIf="isMobile" class="image">
+                    <img src="{{work.image}}" alt="img">
+                  </div>
+
                   <p @transitionAnimationText>{{work.text}}</p>
 
                   <a class="next-work" (click)="onClickProject(work.id)" @transitionAnimationLink>
@@ -37,7 +42,7 @@
               </div>
 
 
-              <div class="image" aTilt [tiltSettings]="settings">
+              <div *ngIf="!isMobile" class="image" aTilt [tiltSettings]="settings">
                 <img src="{{work.image}}" alt="img">
               </div>
 
