@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {NavigationStart, Router, RouterOutlet} from '@angular/router';
 import {routeChangeAnimation} from './shared/routing.animation';
 import {SharedService} from './shared/shared.service';
 import {Meta, Title} from '@angular/platform-browser';
 import {CursorService} from './cursor.service';
+import { PortraitObjectComponent } from './home/portrait-object/portrait-object.component';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import {CursorService} from './cursor.service';
 })
 export class AppComponent implements OnInit {
 
+  isWidth: number;
 
 
   constructor(private sharedSvc: SharedService,
@@ -29,6 +31,7 @@ export class AppComponent implements OnInit {
       }
     });
 
+    this.isWidth = window.innerWidth;
 
     this.titleSvc.setTitle('Plotkin Ruslan - Portfolio');
     this.metaTagSvc.updateTag({name: 'description', content: 'Home page'});
@@ -53,10 +56,14 @@ export class AppComponent implements OnInit {
     );
 
   }
+  
+
 
   ngOnInit() {
-    const links = document.querySelectorAll('a');
-    new CursorService(links);
+    if (this.isWidth > 700) {
+      const links = document.querySelectorAll('a');
+      new CursorService(links);
+    }
   }
 
 

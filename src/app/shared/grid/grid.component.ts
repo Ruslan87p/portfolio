@@ -33,6 +33,7 @@ export class GridComponent implements OnDestroy, OnInit {
       this.state = this.state === 'in' ? 'out' : 'in';
     });
 
+
   }
 
   ngOnInit() {

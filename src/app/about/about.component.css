@@ -39,9 +39,6 @@
   margin: 0 auto;
   padding-bottom: 150px;
 }
-/*[data-scroll-content] {*/
-/*  padding: 10vw 0;*/
-/*}*/
 
 .wrapper-bio {
   width: 100%;
@@ -72,7 +69,7 @@
   max-height: 400px;
   margin-top: 10%;
   color: whitesmoke;
-  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("../../assets/img/noise.gif");
+  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("http://plotkinruslan.com/assets/img/noise.gif");
   box-shadow:  12px 12px 20px #080808,
   -12px -12px 20px transparent;
 }
@@ -105,7 +102,7 @@
   position: relative;
   top: 200px;
   width: 100%;
-  max-width: 1300px;
+  max-width: 1200px;
   /*transform-origin: center;*/
 }
 .word-experience > h1 {
@@ -152,7 +149,7 @@
   top: 0;
   position: absolute;
   z-index: -1;
-  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("../../assets/img/noise.gif");
+  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("http://plotkinruslan.com/assets/img/noise.gif");
   box-shadow:  12px 12px 20px #080808,
   -12px -12px 20px transparent;
 }
@@ -168,7 +165,7 @@
   position: relative;
   top: 200px;
   width: 100%;
-  max-width: 1300px;
+  max-width: 1200px;
 }
 .word-education > h1 {
   font-size: calc(45px + (300 - 100) * ((100vw - 320px)/ (1920 - 320)));
@@ -196,7 +193,7 @@
   top: 0;
   position: absolute;
   z-index: -1;
-  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("../../assets/img/noise.gif");
+  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("http://plotkinruslan.com/assets/img/noise.gif");
   box-shadow:  12px 12px 20px #080808,
   -12px -12px 20px transparent;
 }
@@ -223,7 +220,7 @@
   flex-direction: row;
   position: relative;
   top: 200px;
-  max-width: 1300px;
+  max-width: 1200px;
 }
 
 .word-interests > h1 {
@@ -248,7 +245,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  position: relative;
+  /* position: relative; */
 }
 .hobbies > div ul {
   font-size: calc(16px + (30 - 20) * ((100vw - 320px)/ (1920 - 320)));
@@ -267,7 +264,7 @@
   right: 50px;
   margin-top: -300px;
   z-index: -1;
-  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("../../assets/img/noise.gif");
+  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("http://plotkinruslan.com/assets/img/noise.gif");
   box-shadow:  12px 12px 20px #080808,
   -12px -12px 20px transparent;
 }
@@ -282,7 +279,7 @@
   flex-direction: row;
   position: relative;
   top: 200px;
-  max-width: 1300px;
+  max-width: 1200px;
   font-family: 'Montserrat', sans-serif;
 }
 .word-contact > h1 {
@@ -317,7 +314,7 @@
   left: 100px;
   margin-top: -300px;
   z-index: -1;
-  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("../../assets/img/noise.gif");
+  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("http://plotkinruslan.com/assets/img/noise.gif");
   box-shadow:  12px 12px 20px #080808,
   -12px -12px 20px transparent;
 }
@@ -500,3 +497,69 @@ a {
     clip: rect(0px, 450px, 0px, 0px);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 700px) {
+  .content {
+    padding-bottom: 50px;
+  }
+  .wrapper-bio {
+    flex-direction: column;
+    align-items: center;
+    top: 0;
+  }
+  .text {
+    padding: 20px;
+  }
+  .experience {
+    flex-direction: column;
+    top: 0;
+  }
+  .word-experience > h1 {
+    display: inline-flex;
+  }
+
+  .education {
+    flex-direction: column-reverse;
+    top: 0;
+  }
+  .word-education > h1 {
+    display: inline-flex;
+  }
+  .knowledge {
+    padding: 20px;
+  }
+
+  .interests {
+    flex-direction: column;
+    top: 0;
+  }
+  
+  .word-interests > h1 {
+    display: inline-flex;
+  }
+
+  .contact {
+    flex-direction: column-reverse;
+    top: 0;
+  }
+  .word-contact > h1 {
+    display: inline-flex;
+  }
+  .content-contact {
+    padding: 20px;
+  }
+
+}
+
+
+

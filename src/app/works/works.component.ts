@@ -29,6 +29,7 @@ export class WorksComponent implements OnInit {
   id;
   links;
   planes;
+  isMobile = false;
 
   constructor(private worksSvc: WorksDataService,
               private router: Router) {
@@ -56,6 +57,10 @@ export class WorksComponent implements OnInit {
 
 
   ngOnInit() {
+
+    if (window.innerWidth < 700) {
+      this.isMobile = true;
+    }
 
     this.highlight = document.getElementById('highlight');
     this.planes = document.getElementById('planes');

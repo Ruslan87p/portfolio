@@ -22,6 +22,7 @@ export class MenuComponent implements OnDestroy, OnInit {
   subs: Subscription;
   imgs;
   links;
+  logoState = '';
 
 
 
