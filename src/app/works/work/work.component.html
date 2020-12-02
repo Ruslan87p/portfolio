@@ -5,83 +5,148 @@
 
 
 
+
 <div class="viewport-overlay">
 
   <div id="scroll-container" data-scroll class="scroll-container">
-    <div class="content" data-scroll-content id="content" @transitionAnimation>
+    <div class="content" data-scroll-content id="content" @transitionAnimation appResizeObserver>
 
-      <div *ngIf="isLoaded" id="wrapper-transition">
+      <div id="wrapper-transition" *ngIf="isLoaded">
 
-        <div class="mockup-wrapper">
-          <img id="tmp-image" class="tmp-image" src="https://plotkinruslan.com/assets/img/work-1.jpg" alt="Work" />
-          <img id="tmp-image2" src="https://plotkinruslan.com/assets/img/work-1-mobile.jpg" alt="Work" />
-        </div>
-
-
-        <div>
+        <div class="description">
           <h2>{{work.title}}</h2>
-          <p>{{work.desktop}}</p>
+          <p>{{work.description}}</p>
+        </div>
+
+        <div class="mockup-wrapper anchor anchor-img">
+          <img class="tmp-image" alt="Work" [attr.src]="work.screenshot2Low" [attr.data-src]="work.screenshot2">
+        </div>
+
+        <div class="mockup-wrapper anchor anchor-img">
+          <img class="tmp-image" alt="Work" [attr.src]="work.screenshot1Low" [attr.data-src]="work.screenshot1">
+        </div>
+
+        
+        <div class="mockup-wrapper anchor anchor-img">
+          <img class="tmp-image" alt="Work" [attr.src]="work.mockupLow" [attr.data-src]="work.mockup" *ngIf="work.mockupLow">
+        </div>
+
+        <div class="mockup-wrapper anchor anchor-img">
+          <img class="tmp-image" alt="Work" [attr.src]="work.screenshot3Low" [attr.data-src]="work.screenshot3" *ngIf="work.screenshot3Low">
+        </div>
+
+        <div class="mockup-wrapper anchor anchor-img">
+          <img class="tmp-image" alt="Work" [attr.src]="work.screenshot4Low" [attr.data-src]="work.screenshot4" *ngIf="work.screenshot4Low">
+        </div>
+
+        <div class="mockup-wrapper anchor anchor-img">
+          <img class="tmp-image" alt="Work" [attr.src]="work.screenshot5Low" [attr.data-src]="work.screenshot5" *ngIf="work.screenshot5Low">
         </div>
 
 
-        <div class="devices-wrapper">
-          <img src="https://plotkinruslan.com/assets/img/device-laptop.png" alt="Work" />
+        <h3>Technologies</h3>
+        <div class="devices-wrapper anchor has">
 
-          <div class="technologies">
-            <h3>Technologies</h3>
-            <ul *ngFor="let t of work.technologies">
-              <li>{{t}}</li>
-            </ul>
+          <div class="overlay-img"></div>
+
+          <div class="inner-content">
+            <div class="img-wrapper">
+              <img src="{{work.tmpLaptop}}" alt="Work" />
+            </div>
+            <div class="technologies">
+              <ul *ngFor="let t of work.technologies">
+                <li>{{t}}</li>
+              </ul>
+            </div>
           </div>
 
         </div>
 
        
-        <div class="desktop-wrapper">
+        <h3>Fonts</h3>
+        <div class="desktop-wrapper anchor has">
+          <div class="overlay-img"></div>
 
-          <div class="fonts">
-            <h3>Fonts</h3>
-            <ul *ngFor="let f of work.fonts">
-              <li class="font">{{f}}</li>
-            </ul>
+          <div class="inner-content"> 
+            <div class="fonts">
+              <ul *ngFor="let f of work.fonts">
+                <li class="font">{{f}}</li>
+              </ul>
+            </div>
+  
+            <div class="img-wrapper">
+              <img src="{{work.tmpDesktop}}" alt="Work" />
+            </div>
           </div>
-
-          <img src="https://plotkinruslan.com/assets/img/device-desktop.png" alt="Work" />
+          
         </div>
 
 
         <h3>Colors</h3>
-        <div class="colors">
-          <div class="color" *ngFor="let c of work.colors" [ngStyle]="{'background': c}">{{c}}</div>
-        </div>
+        <div class="colors anchor has">
+          
+          <div class="overlay-img"></div>
 
-
-        <div class="mobile-wrapper">
-          <img src="https://plotkinruslan.com/assets/img/device-phone.png" alt="Work" />
-          <div>
-            <a href="#">Visit Site</a>
-            <a href="#">GitHub</a>
+          <div class="inner-content"> 
+            <div class="color" *ngFor="let c of work.colors" [ngStyle]="{'background': c}">
+              <span>{{c}}</span>
+            </div>
           </div>
+
         </div>
 
-        <div class="next-work">
+
+        <h3>More...</h3>
+        <div class="mobile-wrapper anchor has">
+
+          <div class="overlay-img"></div>
+
+          <div class="inner-content"> 
+            <div class="img-wrapper">
+              <img src="{{work.tmpMobile}}" alt="Work" />
+            </div>
+            
+            <div class="see-more">
+              
+                <a *ngIf="work.git" href="{{work.git}}" class="link-arrow" target="_blank">
+                    <svg class="icon-arrow before">
+                        <use xlink:href="#arrow"></use>
+                    </svg>
+                    <span class="label">GitHub</span>
+                    <svg class="icon-arrow after">
+                        <use xlink:href="#arrow"></use>
+                    </svg>
+                </a>
+                <svg style="display: none;">
+                  <symbol id="arrow" viewBox="0 0 35 15">
+                    <path d="M27.172 5L25 2.828 27.828 0 34.9 7.071l-7.07 7.071L25 11.314 27.314 9H0V5h27.172z "/>
+                  </symbol>
+                </svg>
+
+                <a *ngIf="work.visit" href="{{work.visit}}" class="link-arrow" target="_blank">
+                  <svg class="icon-arrow before">
+                      <use xlink:href="#arrow"></use>
+                  </svg>
+                  <span class="label">Visit site</span>
+                  <svg class="icon-arrow after">
+                      <use xlink:href="#arrow"></use>
+                  </svg>
+              </a>
+              <svg style="display: none;">
+                <symbol id="arrow" viewBox="0 0 35 15">
+                  <path d="M27.172 5L25 2.828 27.828 0 34.9 7.071l-7.07 7.071L25 11.314 27.314 9H0V5h27.172z "/>
+                </symbol>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+
+        <div *ngIf="!work.lastProject" class="next-work">
           <a (click)="nextWork()">NEXT PROJECT</a>
         </div>
 
-
-
       </div>
-
-
-<!--       TODO show imgs by scroll on viewport-->
-<!--      <div *ngFor="let image of imageCollection"-->
-<!--           (deferLoad)="image.show = true"-->
-<!--           style="height: 550px;">-->
-
-<!--        <ng-container *ngIf="image.show">-->
-<!--          <img [src]="image.url" style="height: 550px; width: 100%;"  />-->
-<!--        </ng-container>-->
-<!--      </div>-->
 
 
     </div>

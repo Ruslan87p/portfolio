@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "portfolio-redesign": {
+    "portfolio": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -14,14 +14,15 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "outputPath": "dist/portfolio-redesign",
+            "outputPath": "dist/portfolio",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.css"
@@ -57,25 +58,27 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "portfolio-redesign:build"
+            "browserTarget": "portfolio:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "portfolio-redesign:build:production"
+              "browserTarget": "portfolio:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "portfolio-redesign:build"
+            "browserTarget": "portfolio:build"
           }
         },
         "test": {
@@ -87,7 +90,8 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.css"
@@ -112,15 +116,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "portfolio-redesign:serve"
+            "devServerTarget": "portfolio:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "portfolio-redesign:serve:production"
+              "devServerTarget": "portfolio:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "portfolio-redesign"
+  "defaultProject": "portfolio"
 }

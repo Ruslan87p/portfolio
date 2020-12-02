@@ -1,8 +1,9 @@
   <div class="loader-wrapper" [@loadingAnimation]="loadingState">
     <div class="counter">
       <h5>Please, wait a while</h5>
-      <p #sentence></p>
-      <h1 #percentage>0%</h1>
+      <div *ngIf="!isMobile">
+        <h1 id="percentage">{{ '0' ? counter2 : '0'}}</h1>
+      </div>
       <div class="line-wrapper">
         <hr #line/>
       </div>
@@ -11,25 +12,49 @@
   </div>
 
 
+<div class="hand-mobile" *ngIf="isMobile" [@stateImg]="state">
+  <img src="./assets/img/hand-mobile.png" alt="hand">
+</div>
 
-
+<span [@stateLine]="stateLine" class="left-line">
+  <div class="social-wrapper">
+    <a href="https://www.facebook.com/profile.php?id=100000898902228" target="_blank" class="icons-social">
+      <img class="icon-social" src="./assets/img/f.svg" alt="facebook">
+    </a>
+    <a href="https://www.linkedin.com/in/ruslan-plotkin-ab8244159" target="_blank" class="icons-social">
+      <img class="icon-social" src="./assets/img/in.svg" alt="linkedin">
+    </a>
+    <a href="https://github.com/Ruslan87p?tab=repositories" target="_blank" class="icons-social">
+      <img class="icon-social" src="./assets/img/github.svg" alt="github">
+    </a>
+  </div>
+</span>
 <header class="text-intro">
-  <span [@stateLine]="stateLine" class="left-line"></span>
-
+  
+  <div class="greeting">
     <h1 *ngIf="isLoaded"><span [@textAnimation1]="textState">Hi&nbsp;</span> </h1>
-    <h1 *ngIf="isLoaded"><span [@textAnimation1]="textState">my&nbsp;</span> </h1>
-    <h1 *ngIf="isLoaded"><span [@textAnimation1]="textState">name&nbsp;</span> </h1>
-    <h1 *ngIf="isLoaded"><span [@textAnimation1]="textState">is&nbsp;</span> </h1>
-    <h1 *ngIf="isLoaded"><span [@textAnimation1]="textState">Ruslan&nbsp;</span> </h1>
+    <h1 *ngIf="isLoaded"><span [@textAnimation2]="textState">I'm&nbsp;</span> </h1>
+    <h1 *ngIf="isLoaded"><span [@textAnimation3]="textState">Ruslan&nbsp;</span> </h1> <br>
+  </div>
 
-    <h1 *ngIf="isLoaded"><span [@textAnimation2]="textState">& i am&nbsp;</span> </h1>
-    <h1 *ngIf="isLoaded"><span [@textAnimation2]="textState">a UI/UX&nbsp;</span> </h1>
-    <h1 *ngIf="isLoaded"><span [@textAnimation2]="textState">Designer&nbsp;</span> </h1>
-    <h1 *ngIf="isLoaded"><span [@textAnimation2]="textState">with&nbsp;</span> </h1>
+  <div class="hoiam-wrapper">
+    <div class="reveal-text" *ngIf="!isMobile"></div>
+    <h1 [@textAnimation3]="textState">
 
-    <h1 *ngIf="isLoaded"><span [@textAnimation3]="textState">Front-End&nbsp;</span> </h1>
-    <h1 *ngIf="isLoaded"><span [@textAnimation3]="textState">Development&nbsp;</span> </h1>
-    <h1 *ngIf="isLoaded"><span [@textAnimation3]="textState">skills&nbsp;</span> </h1>
+
+      <div class="slider">
+        <ul class="slider-words">
+          <li class="slider-word">Front-End Developer</li>
+          <li class="slider-word">UI/UX Designer</li>
+          <li class="slider-word">Human 🤟 🙂</li>
+          <!-- This last word needs to duplicate the first one to ensure a smooth infinite animation -->
+          <li class="slider-word">Front-End Developer</li>
+        </ul>
+      </div>
+
+    </h1>        
+  </div>
+
   
 </header>
 

@@ -1,9 +1,26 @@
+import * as math from 'mathjs/dist/math';
+
 
 export class Smooth {
 
   data;
   dom;
   rAF;
+  scrollY;
+  currentState;
+  pageHeight;
+  scrollStatePercentage;
+  onScroll;
+
+  highlight;
+  scrollProgress;
+
+  parallax;
+  
+  initialTop = 0.3;
+  parallaxRatio = -0.2;
+
+
 
   math = {
     lerp: (a, b, n) => {
@@ -19,7 +36,10 @@ export class Smooth {
     width: window.innerWidth
   };
 
-  constructor() {
+  constructor(highlight?, parallax?) {
+
+    this.highlight = highlight;
+    this.parallax = parallax;
 
     this.bindMethods();
 
@@ -37,6 +57,11 @@ export class Smooth {
     this.rAF = null;
 
     this.init();
+
+    if(this.parallax) {
+      this.initialTop = parallax.getBoundingClientRect().top; 
+    }
+
   }
 
   bindMethods() {
@@ -67,6 +92,29 @@ export class Smooth {
 
   scroll() {
     this.data.current = window.scrollY;
+
+
+    this.currentState = document.body.scrollTop || document.documentElement.scrollTop;
+    this.pageHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    this.scrollStatePercentage = (this.currentState / this.pageHeight) * 100;
+    this.highlight.style.width = this.scrollStatePercentage + '%';
+
+    if(this.scrollProgress) {
+      this.scrollProgress.innerHTML = math.round(this.scrollStatePercentage);
+    }
+
+    // geting top of elements in loop that comes from about component
+
+    if (window.innerWidth > 700) {
+
+      this.scrollY = this.data.current;
+
+      if(this.parallax) {
+        this.parallax.style.top = (0 - (this.scrollY * this.parallaxRatio)) + 'px';
+        this.parallax.style.transition = '100ms ease';
+      }
+    }
+    
   }
 
   run() {
@@ -75,7 +123,6 @@ export class Smooth {
       this.data.last = 0;
     }
 
-    // console.log(this.data.last);
 
     const diff = this.data.current - this.data.last;
     const acc = diff / this.config.width;
@@ -97,7 +144,6 @@ export class Smooth {
 
   off() {
     this.cancelAnimationFrame();
-
     this.removeEvents();
   }
 

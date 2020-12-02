@@ -11,7 +11,7 @@ import {HttpClient} from '@angular/common/http';
 export class WorksDataService {
 
 
-  comparisonItems = [];
+  worksList = [];
   data;
 
   constructor(private https: HttpClient) { }
@@ -30,11 +30,11 @@ export class WorksDataService {
 
     // https://portfolio-603c5.firebaseio.com/works.json
     return this.https.get<any[]>('https://portfolio-603c5.firebaseio.com/works.json')
-      .pipe(map((compareItems: any) => {
-          this.comparisonItems = compareItems;
+      .pipe(map((works: any) => {
+          this.worksList = works;
 
-          this.data = this.comparisonItems;
-          return this.comparisonItems;
+          this.data = this.worksList;
+          return this.worksList;
         })
       );
   }
@@ -42,7 +42,11 @@ export class WorksDataService {
 
   // https://portfolio-603c5.firebaseio.com/works/' + id + '.json
   getProduct(id: any): Observable<any> {
-    return this.https.get<any>('https://portfolio-603c5.firebaseio.com/works/' + id + '.json');
+    return this.https.get<any>('https://portfolio-603c5.firebaseio.com/works/' + id + '.json')
+    .pipe(map((works: any) => {
+      return works;
+    })
+  );
   }
 
 

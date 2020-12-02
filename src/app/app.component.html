@@ -1,26 +1,30 @@
 
-<div class="cursor"></div>
-<div class="cursor-follower"></div>
+<div class="wrapper">
 
 
-<app-cursor></app-cursor>
-<app-menu-icon></app-menu-icon>
-
-<app-menu></app-menu>
-<app-grid></app-grid>
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
 
 
+  <app-cursor></app-cursor>
+  <app-menu-icon></app-menu-icon>
+
+  <app-menu></app-menu>
+  <app-grid></app-grid>
 
 
-<div id="main-container" [@routeChangeAnimation]="getRouteAnimationState(outlet)">
-  <router-outlet #outlet="outlet"></router-outlet>
+
+
+    <div id="main-container" [@routeChangeAnimation]="getRouteAnimationState(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+
+
+
+
+  <div class="background-grid-line-1" *ngIf="!isMobile"></div>
+  <div class="background-grid-line-2" *ngIf="!isMobile"></div>
+  <div class="background-grid-line-3" *ngIf="!isMobile"></div>
+
+
 </div>
-
-
-
-<div class="background-grid-line-1"></div>
-<div class="background-grid-line-2"></div>
-<div class="background-grid-line-3"></div>
-
-
-

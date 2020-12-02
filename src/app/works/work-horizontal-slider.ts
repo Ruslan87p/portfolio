@@ -1,4 +1,5 @@
 import * as math from 'mathjs/dist/math';
+import { LazyLoadingImg } from './work/inters.observable';
 
 class Slider {
 
@@ -208,6 +209,7 @@ class Slider {
 
   // on mouse or touch move
   onMouseMove(e) {
+
     // if we are not dragging, we don't do nothing
     if (!this.isMouseDown) return;
 

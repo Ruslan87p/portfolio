@@ -12,24 +12,12 @@ a {
   outline: none;
   padding: 20px 100px;
   border-radius: 50px;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 100;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
   color: #ffffff;
   font-size: 30px;
   margin-top: 50px;
   /*text-decoration: none;*/
-}
-/*GLITCH EFFECT*/
-#container {
-  position: absolute;
-  z-index: 5;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  background-position: center center;
-  border-radius: 20px;
-  background-attachment: fixed;
 }
 .content-header {
   display: flex;
@@ -46,7 +34,7 @@ a {
 
 }
 .container span {
-  font-size: calc(80px + (400 - 100) * ((100vw - 320px)/ (1920 - 320)));
+  font-size: calc(80px + (400 - 100) * ((100vw - 320px) / (1920 - 320)));
   color: whitesmoke;
   line-height: 80%;
   font-weight: 900;
@@ -58,32 +46,47 @@ h1 {
   color: whitesmoke;
   text-transform: uppercase;
   line-height: 20%;
-  font-size: calc(20px + (70 - 50) * ((100vw - 320px)/ (1920 - 320)));
+  font-size: calc(20px + (70 - 50) * ((100vw - 320px) / (1920 - 320)));
   font-weight: 900;
   font-family: 'Montserrat', sans-serif;
   display: inline-block;
 }
 
 
+.bordered {
+  transition: ease all 500ms;
+  color: transparent !important;
+  -webkit-text-stroke: 1px whitesmoke !important;
+}
+.filled {
+  transition: ease all 500ms;
+  color: whitesmoke;
+}
 
 
 
 
-
-.p-canvas-webgl {
-  width: 100vw;
-  height: 100vh;
+.content {
+  width: 100%;
   position: absolute;
   z-index: -1;
-
-  transition: all 40s ease-in-out;
-  animation: scaleAni 60s infinite alternate;
+  height: 100vh;
+  overflow: hidden;
 }
-@keyframes scaleAni {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.3);
-  }
+.content__img {
+	position: absolute;
+	top: 0;
+	left: 0;
+  opacity: 0;
+  width: 100%;
+  max-width: 400px;
+	will-change: transform;
+	filter: none;
+}
+
+@media screen and (min-width: 53em) {
+	.content {
+		height: 100vh;
+		overflow: hidden;
+	}
 }

@@ -6,11 +6,11 @@
   overflow-y:hidden;
   transform-origin: top left;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 
 .black-square {
-  position: absolute;
+  position: fixed;
   z-index: -1;
   transform: translateX(100px);
   width: 100%;
@@ -20,13 +20,17 @@
   background: #0d0d0d;
 }
 
+#scroll-container {
+  height: 100%;
+}
 
 #planes {
   /* width of items * number of items */
-  width: calc(100vw * 7);
+  width: calc(100vw * 5);
   padding: 0 2.5vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
+  justify-content: space-around;
   align-items: center;
   cursor: move;
 }
@@ -60,11 +64,11 @@
 
 .card {
   margin: 0 50px 0 50px;
-  padding: 20px;
+  padding: 0 20px;
   border-top: 1px solid #1d1d1d;
   border-bottom: 1px solid #1d1d1d;
   overflow: hidden;
-  height: 70vh;
+  height: 100vh;
   max-height: 700px;
   display: flex;
 }
@@ -84,7 +88,7 @@
 }
 .image > img {
   width: 100%;
-  max-height: 600px;
+  min-width: 300px;
 }
 #planes.dragged .card > .work >.image {
   pointer-events: none;
@@ -206,19 +210,61 @@ svg {
 /*HOVER LINK*/
 
 
+.mouse-drag-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.mouse-drag-container > .title {
+  color: #ffffff;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.mouse-drag-container > .icon {
+  width: 30px;
+  height: 30px;
+  animation: square 1.7s infinite alternate;
+}
+@keyframes square {
+  0%   {transform: translateX(20px);}
+  100%  {transform: translateX(-20px);}
+}
 
-
+.hide-icon {
+  transform: translateY(200px);
+  transition: ease-in all 300ms;
+}
 
 
 
 @media screen and (max-width: 700px) {
+  #planes {
+    padding: 0;
+    position: relative;
+    height: 100%;
+    display: flex;
+    transform: translateY(0)!important;
+  }
   .card {
     margin: 0;
-    height: 90vh;
-    transform: translateY(5vh);
+    height: 100%;
+    /* height: 100vh !important; */
   }
   .counter {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .image {
+    max-width: 300px;
   }
   .link {
     font-size: 20px;
@@ -226,6 +272,10 @@ svg {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  .title {
+    margin: 30px 0 20px 0;
+    padding: 0;
   }
   svg {
     width: 100px;

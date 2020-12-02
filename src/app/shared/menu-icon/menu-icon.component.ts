@@ -52,7 +52,7 @@ export class MenuIconComponent implements OnInit, OnDestroy {
       (event: any) => {
         if (event instanceof NavigationEnd) {
           this.logoHide = 'out';
-            if(event.url !== '/home') {
+            if(event.url !== '/') {
               this.showHeader = 'in';
             }
         }
@@ -70,13 +70,14 @@ export class MenuIconComponent implements OnInit, OnDestroy {
 
 
 
-    const menuIcon = document.querySelector('.header-menu-icon');
-    const logo = document.querySelector('.header-logo');
+    const movedElems = document.querySelectorAll('.moved');
+    for (let index = 0; index < movedElems.length; index++) {
+      const element = movedElems[index];
+      // service that move elements on hover mouse in specified radius
+      new FollowCursorOnHoverService(element);
+    }
 
-    // service that move elements on hover mouse in specified radius
-    new FollowCursorOnHoverService(menuIcon);
-    new FollowCursorOnHoverService(logo);
-
+    
     menuBtn.addEventListener('click', () => {
       menuBtn.classList.toggle('open');
     });
@@ -105,6 +106,8 @@ export class MenuIconComponent implements OnInit, OnDestroy {
     this.subs.unsubscribe();
     this.sub1.unsubscribe();
     this.sub2.unsubscribe();
+    new FollowCursorOnHoverService().off();
+    window.removeEventListener;
   }
 
 }

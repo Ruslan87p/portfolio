@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild, Output, EventEmitter} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import * as THREE from 'three-full';
 import {
   lineAnimation,
@@ -11,6 +11,10 @@ import {
 import {SharedService} from '../../shared/shared.service';
 import {Subscription} from 'rxjs';
 import { HeaderVisStateService } from './header-vis-state.service';
+import { CursorService } from 'src/app/cursor.service';
+import {FollowCursorOnHoverService} from './../../shared/follow-cursor-on-hover.service';
+import * as math from 'mathjs/dist/math';
+
 
 @Component({
   selector: 'app-portrait-object',
@@ -37,6 +41,17 @@ export class PortraitObjectComponent implements OnInit, OnDestroy {
   counter = 0;
   isWidth: number;
   objPath: string;
+  isMobile = false;
+  texture;
+  material;
+  mesh;
+  mousemove;
+  resize;
+  animate;
+  title;
+  percentageLoading;
+  counter2;
+
 
   constructor(private sharedSvc: SharedService,
               private headerSvc: HeaderVisStateService) {
@@ -45,10 +60,11 @@ export class PortraitObjectComponent implements OnInit, OnDestroy {
 
 
 
-  @ViewChild('percentage', {static: false}) percentageLoading;
   @ViewChild('line', {static: false}) lineLoading;
   @ViewChild('sentence', {static: false}) sentence;
-
+  reveal;
+  complete;
+  statesSubs;
 
   ngOnInit() {
 
@@ -58,170 +74,203 @@ export class PortraitObjectComponent implements OnInit, OnDestroy {
     this.loadingState = 'start';
     this.textState = 'outText';
 
+
+
+    this.statesSubs = () => {
+      this.subs = this.sharedSvc.iconState.subscribe(() => {
+        this.state = this.state === 'in' ? 'out' : 'in';
+        this.textState = this.textState === 'inText' ? 'outText' : 'inText';
+        this.stateLine = this.stateLine === 'in' ? 'out' : 'in';
+
+        line.classList.toggle('play-back');
+      });
+
+    }
+
+
     let camera, scene, renderer;
+    
+    if(this.isWidth < 700) {
+      this.isMobile = true;
 
-      scene = new THREE.Scene();
-      const color = 0x181818;
-      const density = 0.8;
-      scene.fog = new THREE.FogExp2(color, density);
+      setTimeout( () => {
   
-  
-      renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
-  
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(window.innerWidth, window.innerHeight);
-  
-  
-  
-  
-      const sphere = new THREE.SphereBufferGeometry( 0.001, 16, 20 );
-      // LIGHT
-      const light1 = new THREE.PointLight( 0x45a3fa, 2, 25 );
-      light1.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0x0984e3, wireframe: true } ) ) );
-      scene.add( light1 );
-  
-      const light2 = new THREE.PointLight( 0x31d1d6, 2, 25 );
-      light2.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0x0984e3, wireframe: true } ) ) );
-      scene.add( light2 );
-  
-      const light3 = new THREE.PointLight( 0x45a3fa, 2, 25 );
-      light3.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0x0984e3, wireframe: true } ) ) );
-      scene.add( light3 );
-  
-      const light4 = new THREE.PointLight( 0x31d1d6, 2, 25 );
-      light4.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0x0984e3, wireframe: true } ) ) );
-      scene.add( light4 );
-  
-  
-  
-  
-  
-  
-  
-  
-      // start: CAMERA
-      const container = document.getElementById('container');
-      container.appendChild(renderer.domElement);
-      this.container = container;
-  
-      camera = new THREE.PerspectiveCamera(
-        70,
-        window.innerWidth / window.innerHeight,
-        0.001, 100
-      );
-      camera.position.set(0.0, 1.0, 1.4);
-      scene.rotation.x += 0.5;
-      // end: CAMERA
-  
-  
-      const light = new THREE.DirectionalLight(0x111111, 0.5);
-      light.position.setScalar(15);
-      scene.add(light);
-      scene.add(new THREE.AmbientLight(0x222222, 0.5));
-  
-  
-  
-      const objectLoader = new THREE.OBJLoader();
-      
-      objectLoader.load('https://plotkinruslan.com/assets/img/obj/handobj.obj', ( object ) => {
-        // called when the resource is loaded
-          if (object) {
-            scene.add( object );
-          }
-      },
-        ( xhr ) => {
+          this.statesSubs();
+          this.isLoaded = true;
+          this.loadingState = 'finish';
+          
+          this.state = 'in';
+          this.stateLine = 'in';
+          this.textState = 'inText';
 
-          this.counter = xhr.loaded / xhr.total * 100;
-          this.percentageLoading.nativeElement.innerText = Math.round(this.counter) + '%';
-          this.lineLoading.nativeElement.width = Math.round(this.counter) + '%';
-  
-          this.headerSvc.loadingCounter.next(this.counter);
+      }, 10);
+      this.headerSvc.loadingCounter.next(100);
+    }
+    else {
 
-          if (this.counter >= 99) {
-  
-            this.subs = this.sharedSvc.iconState.subscribe(() => {
-              this.state = this.state === 'in' ? 'out' : 'in';
-              this.textState = this.textState === 'inText' ? 'outText' : 'inText';
-              this.stateLine = this.stateLine === 'in' ? 'out' : 'in';
-  
-              line.classList.toggle('play-back');
-            });
-  
-              this.loadingState = 'finish';
-              this.state = 'in';
-              this.stateLine = 'in';
-              this.textState = 'inText';
-              this.isLoaded = true;
-          }
-  
+      const links = document.querySelectorAll('.icon-social');
+      new CursorService(links);
+    
+      if (links.length !== 0) {
+        for (let i = 0; i < links.length; i++) { 
+          new FollowCursorOnHoverService(links[i]);
+        }
+      }
+      // FOG
+        scene = new THREE.Scene();
+        const color = 0x181818;
+        const density = 1;
+        scene.fog = new THREE.FogExp2(color, density);
+
+    
+    
+        renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
+    
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+    
+    
+    
+        // start: CAMERA
+        const container = document.getElementById('container');
+        container.appendChild(renderer.domElement);
+        this.container = container;
+    
+        const fov = 70;
+        const aspect = 2;  // the canvas default
+        const near = 0.1;
+        const far = 1000;
+        camera = new THREE.PerspectiveCamera(
+          fov,
+          aspect,
+          near,
+          far
+        );
+        camera.position.set(0.0, 1.0, 1.6);
+        // end: CAMERA
+
+
+        
+        const planeGeometry = new THREE.PlaneBufferGeometry( 2, 2, 16, 16 );
+
+        const planeMaterial = new THREE.MeshPhongMaterial( { color: 0x3c4eb0f0 } )
+        
+
+        const plane = new THREE.Mesh( planeGeometry, planeMaterial );
+        plane.receiveShadow = true;
+        plane.castShadow = false;
+        plane.position.set(0.0, 1.0, -0.3);
+        scene.add( plane );
+
+
+        
+        // Define the lights for the scene
+        const lightPoin = new THREE.DirectionalLight( 0x3c4eb0, 2, 10 );
+        lightPoin.position.set(0, 0, 25);
+        lightPoin.castShadow = true;  
+        lightPoin.receiveShadow = false; 
+        scene.add(lightPoin);
+
+
+        const objectLoader = new THREE.OBJLoader();
+        
+        objectLoader.load('./../../assets/img/obj/handobj.obj', ( object ) => {
+          // called when the resource is loaded
+            if (object) {
+              
+              object.traverse( (child) => {child.castShadow = true;} );
+              object.castShadow = true;
+              object.receiveShadow = false;
+              scene.add( object );
+            }
         },
-        ( error ) => {
-          // called when loading has errors
-          console.error( 'An error happened', error );
-        });
+          ( xhr ) => {
+            this.counter = xhr.loaded / xhr.total * 100;
+            this.percentageLoading = document.querySelector("#percentage");
+            this.counter2 = math.round(this.counter) + '%';
+
+            this.lineLoading.nativeElement.width = math.round(this.counter);
+            this.headerSvc.loadingCounter.next(this.counter);
   
-  
-  
-  
-  
-  
-      scene.destination = {x: 0, y: 0};
-  
-  
-      const animate = () => {
-        requestAnimationFrame(animate);
-        render();
-      };
-  
-  
-      function render() {
-        scene.rotation.x += (scene.destination.x - scene.rotation.x) * 0.05;
-        scene.rotation.y += (scene.destination.y - scene.rotation.y) * 0.05;
-  
-        const time = Date.now() * 0.0005;
-  
-        light1.position.x = Math.sin( time * 0.7 ) * 10;
-        light1.position.y = Math.cos( time * 0.5 ) * 20;
-        light1.position.z = Math.cos( time * 0.3 ) * 10;
-  
-        light2.position.x = Math.cos( time * 0.3 ) * 10;
-        light2.position.y = Math.sin( time * 0.5 ) * 20;
-        light2.position.z = Math.sin( time * 0.7 ) * 10;
-  
-        light3.position.x = Math.sin( time * 0.7 ) * 10;
-        light3.position.y = Math.cos( time * 0.3 ) * 20;
-        light3.position.z = Math.sin( time * 0.5 ) * 10;
-  
-        light4.position.x = Math.sin( time * 0.3 ) * 10;
-        light4.position.y = Math.cos( time * 0.7 ) * 20;
-        light4.position.z = Math.sin( time * 0.5 ) * 10;
-  
-  
-        renderer.render(scene, camera);
-      }
-  
-  
-      window.addEventListener('resize', resize);
-      function resize() {
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-        renderer.setSize(w, h);
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-      }
-  
-      function mousemove(ep) {
-        const x = (ep.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
-        const y = (ep.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
-        scene.destination.x = y * 0.1;
-        scene.destination.y = x * 0.1;
-      }
-  
-      window.addEventListener('mousemove', mousemove);
-      animate();
+            if (this.counter >= 99) {
+    
+              this.statesSubs();
+    
+                this.loadingState = 'finish';
+                this.state = 'in';
+                this.stateLine = 'in';
+                this.textState = 'inText';
+                this.isLoaded = true;
+
+            }
+    
+          },
+          ( error ) => {
+            // called when loading has errors
+            console.error( 'An error happened', error );
+          });
+    
+    
+    
+    
+    
+    
+        scene.destination = {x: 0, y: 0};
+        const mouse = {x: 0,y: 0};
+    
+    
+        this.animate = () => {
+          requestAnimationFrame(this.animate);
+          render();
+        };
+    
+    
+        function render() {
+          scene.rotation.x += (scene.destination.x - scene.rotation.x) * 0.05;
+          scene.rotation.y += (scene.destination.y - scene.rotation.y) * 0.05;
+          renderer.render(scene, camera);
+        }
+    
+    
+       
+        this.resize = () => {
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+          renderer.setSize(w, h);
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+        }
+        window.addEventListener('resize', this.resize);
+    
 
 
+        this.mousemove = (ep) => { 
+          const x = (ep.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+          const y = (ep.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
 
+          scene.destination.x = y * 0.1;
+          scene.destination.y = x * 0.1;
+
+          event.preventDefault();
+          mouse.x = (ep.clientX / window.innerWidth) * 2 - 1;
+          mouse.y = -(ep.clientY / window.innerHeight) * 2 + 1;
+
+          // Make the light follow the mouse
+          var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
+          vector.unproject(camera);
+          var dir = vector.sub(camera.position).normalize();
+          var distance = -camera.position.z / dir.z;
+          var pos = camera.position.clone().add(dir.multiplyScalar(distance));
+          lightPoin.position.copy(new THREE.Vector3(pos.x, pos.y, pos.z + 2));
+
+        }
+    
+        window.addEventListener('mousemove', this.mousemove);
+        this.animate();
+    }
 
 
   }
@@ -229,6 +278,10 @@ export class PortraitObjectComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
+    window.removeEventListener('mousemove', this.mousemove);
+    window.removeEventListener('resize', this.resize);
+    cancelAnimationFrame(this.animate);
+    clearTimeout();
   }
 
 }

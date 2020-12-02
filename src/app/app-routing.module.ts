@@ -3,10 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
     data: {
-      state: '/home',
+      state: '',
       title: '',
       description: ''
     }
@@ -43,6 +43,7 @@ const routes: Routes = [
     redirectTo: '404'
   }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
