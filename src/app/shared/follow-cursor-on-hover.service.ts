@@ -11,7 +11,7 @@ export class FollowCursorOnHoverService {
   width;
   height;
 
-  constructor(el) {
+  constructor(el?) {
     this.el = el;
     this.hover = false;
 
@@ -75,5 +75,10 @@ export class FollowCursorOnHoverService {
       ease: Power4.easeOut
     });
     this.el.style.zIndex = 1;
+  }
+
+  off() {
+    window.removeEventListener('mousemove', e => this.onMouseMove(e));
+    window.removeEventListener('resize', e => this.calculatePosition(e));
   }
 }

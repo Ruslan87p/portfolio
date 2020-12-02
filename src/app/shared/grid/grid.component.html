@@ -1,8 +1,20 @@
-<div class="column column-1" [@gridChangeAnimation]="state"></div>
-<div class="column column-2" [@gridChangeAnimation]="state"></div>
-<div class="column column-3" [@gridChangeAnimation]="state"></div>
+<div *ngIf="!isMobile">
+    <div class="column column-1" [@gridChangeAnimation]="state"></div>
+    <div class="column column-2" [@gridChangeAnimation]="state"></div>
+    <div class="column column-3" [@gridChangeAnimation]="state"></div>
 
 
-<div class="column-second-layer column-second-layer-1" [@gridChangeAnimationInner]="state"></div>
-<div class="column-second-layer column-second-layer-2" [@gridChangeAnimationInner]="state"></div>
-<div class="column-second-layer column-second-layer-3" [@gridChangeAnimationInner]="state"></div>
+    <div class="column-second-layer column-second-layer-1" [@gridChangeAnimationInner]="state"></div>
+    <div class="column-second-layer column-second-layer-2" [@gridChangeAnimationInner]="state"></div>
+    <div class="column-second-layer column-second-layer-3" [@gridChangeAnimationInner]="state"></div>
+</div>
+
+<div *ngIf="isMobile">
+        <div class="column column-1" [@gridChangeAnimationMobile1]="state"></div>
+        <div class="column column-2" [@gridChangeAnimationMobile2]="state"></div>
+        <div class="column column-3" [@gridChangeAnimationMobile3]="state"></div>
+
+        <div class="column-second-layer column-second-layer-1" [@gridChangeAnimationInnerMobile1]="state"></div>
+        <div class="column-second-layer column-second-layer-2" [@gridChangeAnimationInnerMobile2]="state"></div>
+        <div class="column-second-layer column-second-layer-3" [@gridChangeAnimationInnerMobile3]="state"></div>
+</div>

@@ -1,32 +1,67 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {CursorService} from '../cursor.service';
-import {GlitchCalculation} from './glitch-effect';
-// import {FollowCursorOnHoverService} from '../shared/follow-cursor-on-hover.service';
+import { ImageTrail } from './image.trail.effects';
+
+
 
 @Component({
   selector: 'app-page404',
   templateUrl: './page404.component.html',
   styleUrls: ['./page404.component.css']
 })
-export class Page404Component implements OnInit {
+export class Page404Component implements OnInit, OnDestroy {
 
   links;
   canvas;
+
+  
+  scene;
+  renderer;
+  container;
+  camera;
+  animate;
+  resize;
+  mousemove;
+  render;
+  cube;
+  onMove;
+  onLeave;
+  borderText;
+
 
   constructor() { }
 
   ngOnInit() {
 
-    this.links = document.querySelectorAll('a');
-    console.log(this.links);
-    new CursorService(this.links);
+
+    const links = document.querySelectorAll('a');
+    new CursorService(links);
+    new ImageTrail();
+
+    this.borderText = document.querySelector('.border-text');
+
+    this.onMove = () => {
+      this.borderText.classList.add('bordered');
+      this.borderText.classList.remove('filled');
+    }
+
+    this.onLeave = () => {
+      this.borderText.classList.add('filled');
+      this.borderText.classList.remove('bordered');
+    }
 
 
-    this.canvas = document.getElementById('canvas-webgl');
-    new GlitchCalculation(this.canvas);
+    this.borderText.addEventListener('mouseenter', this.onMove);
+    this.borderText.addEventListener('mouseleave', this.onLeave);
 
-    // new FollowCursorOnHoverService(this.links);
+
+
+
   }
 
+  ngOnDestroy() {
+    document.removeEventListener('mouseenter', this.onMove);
+    document.removeEventListener('mouseleave', this.onLeave)
+  }
 
 }

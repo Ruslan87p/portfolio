@@ -6,8 +6,6 @@
 <div class="viewport-overlay">
 
 
-  <h1 class="scroll-progress">{{!scrollY ? 0 : scrollY}}</h1>
-
 
     <div data-scroll id="scroll-container" class="scroll-container">
       <div data-scroll-content class="content" @transitionAnimation>
@@ -16,13 +14,14 @@
 
           <div class="img-wrap" id="img-wrap"></div>
 
-          <div class="text" id="text" appParallax [ratio]="-0.1">
+          <div class="text" id="text">
             <p>
-              Hey there, let me give you a short intro about myself. <br> My name is Ruslan, iam live in Israel and make
+              Hey there, let me give you a short intro about myself.
+              <br>My name is Ruslan, i live in Israel and make
               <br>UI / UX with Front-End development experience.
-              <br>I am passionate about what I'am do and love to spend a lot of time to design user interfaces, people often simply call them websites.
-              <br>Getting involved in a process where I try to understand everything that is necessary, without missing important points. I am able to quickly understand the needs and possible approaches of each project , to ensure the best solution.
-              <br>I like minimalism and always try to do all simple and understood.
+              <br>Iam passionate about what I am doing and love to spend a lot of time designing user interfaces, people often simply call them websites.
+              <br>Getting involved in a process where I try to understand everything that is necessary, without missing important points. I am able to analyze and understand rapidly the needs and always try to make things simple and understandable , to ensure the best solution.
+              <br>And I like minimalism).
             </p>
             <span>
                 “The ability to simplify means to eliminate the unnecessary so that the necessary may speak.”
@@ -31,7 +30,7 @@
               </span>
           </div>
 
-          <div class="square0" appParallax [ratio]="-0.2"></div>
+          <!-- <div class="square0 parralax"></div> -->
 
         </div>
 
@@ -42,7 +41,7 @@
             <h1>ERIE</h1>
             <h1>NCE</h1>
           </div>
-          <div class="skills" appParallax [ratio]="-0.1">
+          <div class="skills">
             <ul>
               <li>Angular</li>
               <li>React</li>
@@ -51,30 +50,34 @@
               <li>JavaScript</li>
               <li>TypeScript</li>
               <li>CSS</li>
-              <li>UI/UX</li>
-              <li>Photoshop</li>
-              <li>Illustrator</li>
+              <li>JQuery</li>
+              <li>Figma</li>
             </ul>
             <ul>
               <li>Gulp</li>
               <li>THREE.js</li>
               <li>GSAP</li>
-              <li>JQuery</li>
-              <li>Bootstrap</li>
-              <li>Foundation</li>
-              <li> </li>
-              <li> </li>
-              <li> </li>
-              <li> </li>
+              <li>UI/UX</li>
+              <li>Photoshop</li>
+              <li>Illustrator</li>
+              <li>Bootstrap </li>
+              <li>Foundation </li>
+              <li>Gtag</li>
             </ul>
           </div>
 
-          <div class="square" appParallax [ratio]="-0.2"></div>
+          <div class="square parralax">
+            <h1 *ngIf="!isMobile">
+             <span style="position: relative; left: -65px;">2015</span>
+              <br> 
+             <span style="position: relative; right: -65px;">2020</span>
+            </h1>
+          </div>
         </div>
 
 
         <div class="education">
-          <div class="knowledge" appParallax [ratio]="-0.1">
+          <div class="knowledge">
             <div class="p1">
               <p>Kiryat Technion, ISRAEL - 01-2013/08-2016</p>
               <p>National School of Engineers</p>
@@ -93,7 +96,13 @@
             <h1>ION</h1>
           </div>
 
-          <div class="square2" appParallax [ratio]="-0.2"></div>
+          <div class="square2 parralax">
+            <h1 *ngIf="!isMobile">
+              <span style="position: relative; left: -65px;">2013</span>
+               <br> 
+              <span style="position: relative; right: -65px;">2020</span>
+             </h1>
+          </div>
         </div>
 
 
@@ -104,36 +113,34 @@
             <h1>ERE</h1>
             <h1>STS</h1>
           </div>
-          <div class="wrapper-hobbies">
-            <div class="hobbies" appParallax [ratio]="-0.1">
 
-              <div>
+            <div class="hobbies">
                 <ul>
                   <li>Movie</li>
                   <li>Travel</li>
-                </ul>
-                <ul>
+                  <li>Animals</li>
                   <li>Music</li>
                   <li>Games</li>
+                  <li>Art</li>
                 </ul>
-              </div>
 
-              <div>
                 <ul>
                   <li>Coffee</li>
                   <li>Snow</li>
-                </ul>
-
-                <ul>
+                  <li>Technologies</li>
                   <li>Stand Up</li>
                   <li>Gym</li>
+                  <li>Technologies</li>
                 </ul>
-              </div>
-
             </div>
-          </div>
 
-          <div class="square3" appParallax [ratio]="-0.2"></div>
+          <div class="square3 parralax">
+            <h1 *ngIf="!isMobile">
+              <span style="position: relative; left: -65px;">1997</span>
+               <br> 
+              <span style="position: relative; right: -65px;">2020</span>
+             </h1>
+          </div>
         </div>
 
 
@@ -141,25 +148,40 @@
 
           <div class="content-contact">
             <p>
-              Hey, there, YES you, i will be glad being a part of cool project and make cool stuff,
-              you can
+              I would love to become a part of a team, working together on interesting and cool projects. Share my experience, learn and expand my knowledge and most importantly - Enjoy it all.
+              <br>
+              You can contact me
+              <br>
+              <br>
               <span class="contact-me-wrapper">
-                <a class="contact-me" href="mailto:plotkin1987@gmail.com">Contact Me</a>
+                <a class="contact-me" href="mailto:plotkin1987@gmail.com">plotkin1987@gmail.com</a>
               </span>
-              , or you can just drop message and say hello)
+              <br>
+              <br>
+              Also, if you are interested, you can download my CV.
             </p>
 
 
             <section>
-              <a href="#" class="download" data-text="download">DOWNLOAD CV</a>
+              <span class="contact-me-wrapper">
+                <a class="contact-me" href="./../../assets/img/cv.pdf" download="cv"> 
+                    Download CV 
+                 </a> 
+                <a class="contact-me" href="#"></a>
+              </span>
             </section>
 
-            <div class="square4" appParallax [ratio]="-0.2"></div>
           </div>
           <div class="word-contact">
             <h1>CON</h1>
             <h1>TAC</h1>
             <h1>TME</h1>
+          </div>
+
+          <div class="square4 parralax">
+            <h1 *ngIf="!isMobile">
+              <span style="position: relative; left: -65px;">@.com</span>
+             </h1>
           </div>
 
 

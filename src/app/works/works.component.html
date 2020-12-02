@@ -7,12 +7,12 @@
   <div id="scroll-container" class="scroll-container">
     <div class="content" id="content" @transitionAnimation>
 
-      <div class="black-square"></div>
+      <div class="black-square" *ngIf="!isMobile"></div>
 
 
       <div id="planes">
 
-        <ng-template ngFor let-i="index" let-work [ngForOf]="worksList">
+        <ng-template ngFor let-i="index" let-work [ngForOf]="worksList" *ngIf="isLoading">
           <div class="card card-{{i}}">
 
             <div class="work" id="work">
@@ -22,13 +22,13 @@
                 <h3 class="title" @transitionAnimationText>{{work.title}}</h3>
                 <div class="project">
 
-                  <div *ngIf="isMobile" class="image">
-                    <img src="{{work.image}}" alt="img">
+                  <div *ngIf="isMobile" @transitionAnimationText class="image anchor anchor-img">
+                    <img [attr.src]="work.imageLow" [attr.data-src]="work.image" alt="img">
                   </div>
 
-                  <p @transitionAnimationText>{{work.text}}</p>
+                  <p @transitionAnimationText>{{work.shortIntro}}</p>
 
-                  <a class="next-work" (click)="onClickProject(work.id)" @transitionAnimationLink>
+                  <a *ngIf="work.description" class="next-work" (click)="onClickProject(work.id)" @transitionAnimationLink>
                     <div class="link">
                       <span class="hover">View project</span>
                       <svg viewBox="0 0 50.8 32.6">
@@ -42,8 +42,8 @@
               </div>
 
 
-              <div *ngIf="!isMobile" class="image" aTilt [tiltSettings]="settings">
-                <img src="{{work.image}}" alt="img">
+              <div *ngIf="!isMobile" class="image anchor anchor-img" aTilt [tiltSettings]="settings">
+                <img [attr.src]="work.imageLow" [attr.data-src]="work.image" alt="img">
               </div>
 
             </div>
@@ -51,7 +51,15 @@
         </ng-template>
 
 
+
+
       </div>
+
+        <div *ngIf="!isMobile" class="mouse-drag-container">
+          <span class="title">drag to see more</span>
+          <img class="icon" src="./../../assets/img/mouse-drag.svg" alt="">
+        </div>
+
     </div>
   </div>
 

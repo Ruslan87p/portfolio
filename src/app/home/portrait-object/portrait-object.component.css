@@ -12,42 +12,103 @@
   z-index: 98;
   text-align: left;
   max-width: 1200px;
-  padding: 0 0 0 20px;
+  height: 300px;
   margin: 0;
 
   padding: 30px;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.greeting {
+  display: flex;
   flex-direction: row;
 }
 
 .left-line {
   position: absolute;
-  left: 50px;
-  width: 50px;
-  background: #3c4eb0;
+  z-index: 5;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 115px;
+  background: linear-gradient( rgba(0, 0, 0, 0.88) 100%, rgba(0, 0, 0, 0.88)100%), url("https://test.plotkinruslan.com/assets/img/noise.gif");
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+.social-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.social-wrapper > a > img{
+  display: flex;
+  width: 30px;
+  height: 30px;
+}
+.social-wrapper > a {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.hoiam-wrapper {
+  height: auto;
+  overflow: hidden;
+  z-index: 1;
+  position: relative;
+}
+.hoiam {
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  line-height: 120%;
+  font-size: calc(30px + (100 - 50) * ((100vw - 320px)/ (1920 - 320)));
+}
+.reveal-text {
+  background: linear-gradient( rgba(13, 13, 13, 0.97) 100%, rgba(13, 13, 13, 0.97)100%), url("https://test.plotkinruslan.com/assets/img/noise.gif");
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  top: -100px;
+  z-index: 3;
+  animation: showReveal 3s infinite;
+  -webkit-animation-delay: 2.0s;
+  animation-delay: 2.0s;
+}
+@keyframes showReveal {
+  0% {
+    top: -200px;
+  }
+  100% {
+    top: 200px;
+  }
 }
 
 
-.text-intro > h1 {
+
+.text-intro > div > h1 {
   padding: 0;
   margin: 0;
   color: #ffffff;
-  /* text-transform: uppercase; */
-  /* font-family: 'Montserrat', sans-serif; */
-  font-family: 'Raleway', sans-serif;
-  /*text-transform: uppercase;*/
-  font-weight: 100;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
   font-size: calc(30px + (100 - 50) * ((100vw - 320px)/ (1920 - 320)));
-  height: auto;
   overflow: hidden;
+  height: 1.1em;
 }
 
-.text-intro > h1 > span {
+.text-intro > div > h1 > span {
   position: relative;
   z-index: 100;
 }
+
 
 
 
@@ -68,7 +129,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("http://plotkinruslan.com/assets/img/noise.gif");
+  background-image: url("https://test.plotkinruslan.com/assets/img/noise.gif");
 }
 .counter {
   width: 100%;
@@ -104,8 +165,7 @@
   color: white;
 }
 .line-wrapper {
-  width: 100%;
-  max-width: 500px;
+  width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,25 +174,124 @@
 .loader-wrapper .counter hr {
   background: #3c4eb0;
   border: none;
+  height: 10px;
+}
+
+
+@media screen and (max-width: 1366px) {
+  .text-intro {
+    max-width: 900px;
+    height: 300px;
+  }
+}
+
+
+@media screen and (max-width: 700px) {
+  .hoiam-wrapper {
+  /* height: auto; */
+  overflow: hidden;
+  z-index: 1;
+  position: relative;
   height: 100px;
+}
+  .text-intro {
+    padding:0 0 0 10vh;
+    width: 100%;
+    top: 60%;
+    height: auto;
+    flex-direction: column;
+  }
+  .text-intro > div > h1 {
+    line-height: 150%;
+  }
+  .hoiam {
+    line-height: 150%;
+    overflow: visible !important;
+  }
+  .left-line {
+    width: 100%;
+    max-width: 15vw;
+    padding-bottom: 50px;
+  }
+
+.hand-mobile {
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  mix-blend-mode: darken;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hand-mobile > img {
+  width: 100%;
+  max-width: 200px;
+  /* mix-blend-mode: screen; */
+  opacity: 0.5;
+  filter: drop-shadow(0 0 0.75rem black);
+}
+
+
 }
 
 
 
 
-@media screen and (max-width: 700px) {
-  .text-intro {
-    padding: 30px;
-    width: 100%;
-    top: 70%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+
+
+
+
+
+
+
+
+
+
+
+
+
+.slider {
+  display: inline-block;
+  /* height: 1.3em; */
+  overflow: hidden;
+  vertical-align: middle;
+}
+.slider-words {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  -webkit-animation-name: wordSlider;
+          animation-name: wordSlider;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-duration: 9s;
+          animation-duration: 9s;
+          animation-delay: 2s;
+}
+.slider-word {
+  display: block;
+  line-height: 1.3em;
+  text-align: left;
+}
+
+@keyframes wordSlider {
+  0%, 27% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
   }
-  .text-intro > h1 {
-    line-height: 150%;
+  33%, 60% {
+    -webkit-transform: translateY(-25%);
+            transform: translateY(-25%);
   }
-  .left-line {
-    width: 100px;
+  66%, 93% {
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  100% {
+    -webkit-transform: translateY(-75%);
+            transform: translateY(-75%);
   }
 }

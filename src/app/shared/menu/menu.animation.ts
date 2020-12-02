@@ -11,7 +11,7 @@ export const menuAnimation1 = trigger('menuAnimation1', [
   ]),
   state('out', style({
     opacity: 0,
-    transform: 'translate(10px, 0)',
+    transform: 'translate(-10px, 0)',
     visibility: 'hidden',
   })),
   transition('out => in', [
@@ -33,7 +33,7 @@ export const menuAnimation2 = trigger('menuAnimation2', [
   ]),
   state('out', style({
     opacity: 0,
-    transform: 'translate(10px, 0)',
+    transform: 'translate(-10px, 0)',
     visibility: 'hidden',
   })),
   transition('out => in', [
@@ -54,7 +54,7 @@ export const menuAnimation3 = trigger('menuAnimation3', [
   ]),
   state('out', style({
     opacity: 0,
-    transform: 'translate(10px, 0)',
+    transform: 'translate(-10px, 0)',
     visibility: 'hidden',
   })),
   transition('out => in', [

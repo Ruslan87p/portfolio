@@ -10,7 +10,6 @@ import {RouterModule} from '@angular/router';
 import { CursorComponent } from './cursor/cursor.component';
 import { MenuIconComponent } from './menu-icon/menu-icon.component';
 import { MenuComponent } from './menu/menu.component';
-import { ParallaxDirective } from './parallax.directive';
 import {AngularTiltModule} from 'angular-tilt';
 
 
@@ -24,8 +23,7 @@ import {AngularTiltModule} from 'angular-tilt';
     GridComponent,
     CursorComponent,
     MenuIconComponent,
-    MenuComponent,
-    ParallaxDirective
+    MenuComponent
   ],
   exports: [
     HomeComponent,
@@ -36,8 +34,7 @@ import {AngularTiltModule} from 'angular-tilt';
     GridComponent,
     CursorComponent,
     MenuIconComponent,
-    MenuComponent,
-    ParallaxDirective
+    MenuComponent
   ],
   imports: [
     CommonModule,

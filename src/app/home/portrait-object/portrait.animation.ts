@@ -45,16 +45,16 @@ export const portraitAnimation = trigger('stateImg', [
 // LINE
 export const lineAnimation = trigger('stateLine', [
   state('in', style({
-    height: '100%'
+    left: '0'
   })),
   transition('in => out', [
-    animate('500ms 600ms cubic-bezier(0.86, 0, 0.07, 1)')
+    animate('700ms 600ms cubic-bezier(0.86, 0, 0.07, 1)')
   ]),
   state('out', style({
-    height: '0'
+    left: '-200px'
   })),
   transition('out => in', [
-    animate('500ms 2500ms cubic-bezier(0.86, 0, 0.07, 1.2)')
+    animate('700ms 2500ms cubic-bezier(0.86, 0, 0.07, 1)')
   ]),
 
   // ENTER
@@ -177,19 +177,19 @@ export const textAnimation2 = trigger('textAnimation2', [
 export const textAnimation3 = trigger('textAnimation3', [
   state('inText', style({
     opacity: 1,
-    top: '0'
+    transform: 'translateY(0)'
   })),
   transition('inText => outText', [
     animate('700ms 500ms cubic-bezier(.94,.01,.06,1)')
   ]),
   state('outText', style({
     opacity: 0,
-    top: '300px'
+    transform: 'translateY(300px)'
   })),
   transition('outText => inText', [
     group([
       animate('900ms 2100ms cubic-bezier(.94,.01,.06,1)', style({
-        top: '0'
+        transform: 'translateY(0)'
       })),
       animate('900ms 2200ms cubic-bezier(.94,.01,.06,1)', style({
         opacity: 1,

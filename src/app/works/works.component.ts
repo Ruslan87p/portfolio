@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy, HostListener} from '@angular/core';
 import {WorksDataService} from './works-data.service';
 import {transitionAnimation} from '../transition-animation';
 import {transitionAnimationDigit, transitionAnimationLink, transitionAnimationText} from './works.animation';
@@ -7,6 +7,7 @@ import {CursorService} from '../cursor.service';
 import {TimelineLite} from 'gsap/TweenMax';
 import {Router} from '@angular/router';
 import * as math from 'mathjs/dist/math';
+import { LazyLoadingImg } from './work/inters.observable';
 
 
 @Component({
@@ -20,7 +21,7 @@ import * as math from 'mathjs/dist/math';
     transitionAnimationText
   ]
 })
-export class WorksComponent implements OnInit {
+export class WorksComponent implements OnInit, OnDestroy {
 
   highlight;
   worksList = [];
@@ -30,15 +31,23 @@ export class WorksComponent implements OnInit {
   links;
   planes;
   isMobile = false;
+  isEventListener;
+  deleteDragIcon;
+  isLoading = false;
+  anchor;
 
   constructor(private worksSvc: WorksDataService,
               private router: Router) {
+
+      if (window.innerWidth < 700) {
+        this.isMobile = true;
+      }
+            
   }
 
 
   onClickProject(id) {
     const tl = new TimelineLite();
-
     const isComplete = () => {
       this.router.navigate(['/works/' + id]);
     };
@@ -58,40 +67,46 @@ export class WorksComponent implements OnInit {
 
   ngOnInit() {
 
-    if (window.innerWidth < 700) {
-      this.isMobile = true;
-    }
+      
+
 
     this.highlight = document.getElementById('highlight');
     this.planes = document.getElementById('planes');
 
     setTimeout(() => {
+      this.anchor = document.querySelectorAll('.anchor');
+      new LazyLoadingImg(this.anchor)
+      
       this.links = document.querySelectorAll('a');
       new CursorService(this.links);
+      if (!this.isMobile) {
+        let dragIcon = document.querySelector('.mouse-drag-container');
+        this.deleteDragIcon = document.addEventListener('click', () => {
+          dragIcon.classList.add('hide-icon');
+        });
+      }
     }, 1000);
 
 
+    
 
 
-    window.addEventListener('mouseup', () => {
-      // const max = 100;
+    
 
-      // Get css translateX
-      const style = window.getComputedStyle(this.planes);
-      const matrix = new WebKitCSSMatrix(style.transform);
+    // this.isEventListener = () => {
+    //     // Get css translateX
+    //     const style = window.getComputedStyle(this.planes);
+    //     const matrix = new WebKitCSSMatrix(style.transform);
+    //     const buuu = math.abs((math.round((matrix.m41 * 1000) / 100) / 100)) / 100 * 10;
+    //     math.round(buuu);
+    //     // console.log(math.round(buuu)  * 10 / 100);
+    //     this.highlight.style.width = buuu + '%';
+    // }
 
-      const buuu = math.abs((math.round((matrix.m41 * 1000) / 100) / 100)) / 100 * 10;
-      math.round(buuu);
-      console.log(math.round(buuu), 'buuu');
-
-      // const buuu2 = math.min(max, math.max(0, buuu));
-      // console.log(buuu2);
-
-      this.highlight.style.width = buuu + '%';
-    });
+    // window.addEventListener('mouseup', this.isEventListener);
 
 
-    new RunSlider();
+    
 
 
     this.settings = {
@@ -113,9 +128,20 @@ export class WorksComponent implements OnInit {
       .subscribe(items => {
         this.worksList = items;
         this.id = items.id;
+
+        this.isLoading = true;
+
+        new RunSlider();
       });
 
 
+  }
+
+
+  ngOnDestroy() {
+    // window.removeEventListener('mouseup', this.isEventListener);
+    window.removeEventListener('click', this.deleteDragIcon);
+    new LazyLoadingImg(this.anchor).onDestroyEvent();
   }
 
 

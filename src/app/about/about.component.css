@@ -20,64 +20,86 @@
   width: 0%;
 }
 
-
-
-.scroll-progress {
-  position: fixed;
-  font-size: calc(300px + (600 - 100) * ((100vw - 320px)/ (1920 - 320)));
-  font-family: 'Montserrat', sans-serif;
-  line-height: 0%;
+.parralax {
+  overflow: hidden;
+  background: linear-gradient( rgba(0, 0, 0, 0.86) 100%, rgba(0, 0, 0, 1)100%), url("https://test.plotkinruslan.com/assets/img/noise.gif");
   display: flex;
-  bottom: -10%;
-  -webkit-text-stroke: 3px #0d0d0d;
-  -webkit-text-fill-color: transparent;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(50px + (130 - 100) * ((100vw - 320px)/ (1920 - 320)));
+  line-height: 160%;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  width: 0;
 }
+.overlay-parralax-animation {
+  animation-name: reveal;
+  animation-duration: 1.5s;
+  animation-direction: alternate; /* or: normal */
+  animation-timing-function: cubic-bezier(.91,0,.1,1);
+  animation-fill-mode: forwards; /* or: backwards, both, none */
+}
+@keyframes reveal {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 600px;
+  }
+}
+
+
 .content {
   max-width: 1200px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding-bottom: 150px;
+  height: auto;
 }
 
 .wrapper-bio {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: row;
   align-items: flex-start;
   position: relative;
-  top: 100px;
+  margin-top: 100px;
 }
 
 .img-wrap {
   pointer-events: none;
-  width: 400px;
-  height: 500px;
-  background: ghostwhite;
+  width: 100%;
+  max-width: 500px;
+  height: 600px;
+  background: url('./../../assets/img/portrait.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  right: -25%;
 }
 
 
 
-.square0 {
-  width: 100%;
+/* .square0 {
   position: absolute;
   top: 0;
+  width: 0;
+  left: 10%;
   z-index: -1;
-  max-width: 600px;
   height: 100%;
-  max-height: 400px;
-  margin-top: 10%;
+  max-height: 300px;
+  transform: translateY(10%);
   color: whitesmoke;
-  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("http://plotkinruslan.com/assets/img/noise.gif");
-  box-shadow:  12px 12px 20px #080808,
-  -12px -12px 20px transparent;
-}
+} */
 
 
 .text {
+  padding: 20px 0 0 50px;
   width: 100%;
+  max-width: 500px;
   position: relative;
+  right: 0;
   max-width: 600px;
   height: 100%;
   max-height: 700px;
@@ -86,24 +108,29 @@
   align-items: center;
   flex-direction: column;
 }
-.text > p, .text > span {
+.text > span {
   margin: 0;
   padding: 50px 0 10px 0;
   font-size: calc(16px + (18 - 10) * ((100vw - 320px)/ (1920 - 320)));
   font-family: 'Montserrat', sans-serif;
   font-weight: 100;
 }
+.text > p {
+  margin: 0;
+  font-size: calc(16px + (18 - 10) * ((100vw - 320px)/ (1920 - 320)));
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+}
+
 
 /*EXPERIENCE*/
 .experience {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  position: relative;
-  top: 200px;
+  margin-top: 150px;
   width: 100%;
-  max-width: 1200px;
-  /*transform-origin: center;*/
+  position: relative;
 }
 .word-experience > h1 {
   font-size: calc(45px + (300 - 100) * ((100vw - 320px)/ (1920 - 320)));
@@ -112,6 +139,7 @@
   display: flex;
   color: whitesmoke;
   margin-top: 100px;
+  letter-spacing: 30px;
 }
 
 .skills {
@@ -120,12 +148,14 @@
   align-items: flex-start;
   text-align: start;
   width: 100%;
+  max-width: 600px;
   justify-content: space-around;
   position: relative;
+  padding: 20px;
 }
 .skills > ul {
   position: relative;
-  height: 100%;
+  height: auto;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
@@ -141,17 +171,13 @@
 }
 
 .square {
-  width: 100%;
-  max-width: 600px;
+  width: 0;
   height: 100%;
-  max-height: 400px;
-  right: 15%;
   top: 0;
+  max-height: 300px;
+  right: 15%;
   position: absolute;
   z-index: -1;
-  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("http://plotkinruslan.com/assets/img/noise.gif");
-  box-shadow:  12px 12px 20px #080808,
-  -12px -12px 20px transparent;
 }
 
 
@@ -162,9 +188,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  position: relative;
-  top: 200px;
+  margin-top: 100px;
   width: 100%;
+  position: relative;
   max-width: 1200px;
 }
 .word-education > h1 {
@@ -175,27 +201,25 @@
   display: flex;
   margin-top: 100px;
   text-align: right;
+  letter-spacing: 30px;
 }
 .knowledge {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
   flex-direction: column;
   position: relative;
   height: 100%;
-}
-.square2 {
   width: 100%;
   max-width: 600px;
+  padding: 20px;
+}
+.square2 {
+  width: 0;
   height: 100%;
-  max-height: 400px;
-  left: 15%;
-  top: 0;
+  max-height: 300px;
+  transform: translate(15%, -30%);
   position: absolute;
   z-index: -1;
-  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("http://plotkinruslan.com/assets/img/noise.gif");
-  box-shadow:  12px 12px 20px #080808,
-  -12px -12px 20px transparent;
 }
 .knowledge > .p1,
 .knowledge > .p2,
@@ -204,9 +228,14 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 100;
   line-height: 200%;
+  padding: 3% 0;
   color: whitesmoke;
 }
-
+.knowledge > .p1 > p,
+.knowledge > .p2 > p,
+.knowledge > .p3 > p {
+  margin: 0;
+}
 
 
 
@@ -214,13 +243,12 @@
 /*INTERESTS*/
 .interests {
   width: 100%;
-  /*background: #d35400;*/
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  position: relative;
-  top: 200px;
+  margin-top: 100px;
   max-width: 1200px;
+  position: relative;
 }
 
 .word-interests > h1 {
@@ -231,6 +259,7 @@
   color: whitesmoke;
   text-align: left;
   margin-top: 100px;
+  letter-spacing: 30px;
 }
 .wrapper-hobbies {
   display: flex;
@@ -242,12 +271,12 @@
 .hobbies {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-around;
-  /* position: relative; */
+  padding: 20px;
+  text-align: right;
+  max-width: 600px;
 }
-.hobbies > div ul {
+.hobbies > ul {
   font-size: calc(16px + (30 - 20) * ((100vw - 320px)/ (1920 - 320)));
   font-family: 'Montserrat', sans-serif;
   font-weight: 100;
@@ -255,18 +284,15 @@
   color: whitesmoke;
   list-style: none;
 }
+
 .square3 {
-  width: 100%;
-  max-width: 700px;
   height: 100%;
-  max-height: 400px;
+  max-height: 300px;
   position: absolute;
-  right: 50px;
-  margin-top: -300px;
+  right: 10%;
+  width: 0;
+  transform: translateY(-70%);
   z-index: -1;
-  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("http://plotkinruslan.com/assets/img/noise.gif");
-  box-shadow:  12px 12px 20px #080808,
-  -12px -12px 20px transparent;
 }
 
 
@@ -274,11 +300,11 @@
 
 .contact {
   width: 100%;
+  position: relative;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  position: relative;
-  top: 200px;
+  margin-top: 100px;
   max-width: 1200px;
   font-family: 'Montserrat', sans-serif;
 }
@@ -289,219 +315,46 @@
   text-align: left;
   display: flex;
   margin-top: 100px;
+  letter-spacing: 30px;
 }
 .content-contact {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   color: #ffffff;
   font-size: calc(16px + (30 - 20) * ((100vw - 320px)/ (1920 - 320)));
   font-weight: 100;
-  padding-right: 20px;
+  padding: 20px;
+}
+.content-contact > p {
+  max-width: 600px;
+}
+.content-contact > section {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
 .contact-me-wrapper {
-  background: #eb2141;
+  background: #1156fa;
   display: inline-flex;
   flex-direction: row;
+  font-weight: bold;
   width: max-content;
+  font-size: calc(20px + (30 - 20) * ((100vw - 320px)/ (1920 - 320)));
+}
+.contact-me {
+  color: #fff;
 }
 
 .square4 {
-  width: 100%;
-  max-width: 700px;
+  width: 0;
   height: 100%;
-  max-height: 400px;
+  max-height: 300px;
   position: absolute;
-  left: 100px;
-  margin-top: -300px;
+  left: 10%;
+  transform: translateY(-100%);
   z-index: -1;
-  background: linear-gradient( rgba(0, 0, 0, 0.96) 100%, rgba(0, 0, 0, 1)100%), url("http://plotkinruslan.com/assets/img/noise.gif");
-  box-shadow:  12px 12px 20px #080808,
-  -12px -12px 20px transparent;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-a {
-  display: block;
-  color: white;
-  text-decoration: none;
-}
-.download {
-  display: block;
-  position: relative;
-  background: none;
-  outline: none;
-  padding: 20px 50px;
-  font-size: .75em;
-  letter-spacing: .35em;
-  text-align: center;
-  text-transform: uppercase;
-  border: 1px solid #3c4eb0;
-  transition: all .2s ease;
-}
-.download:before, .download:after {
-  content: 'DOWNLOAD CV';
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 8px 0;
-  width: 100%;
-  clip: rect(0px, 0px, 0px, 0px);
-  background: #3c4eb0;
-  color: #000;
-}
-.download:before {
-  left: -3px;
-  top: -2px;
-  text-shadow: 2px 0 #fff;
-  box-shadow: 2px 0 #fff;
-}
-.download:after {
-  left: 2px;
-  bottom: -2px;
-  text-shadow: -1px 0 #fff;
-  box-shadow: -1px 0 #fff;
-}
-.download:hover {
-  background: #3c4eb0;
-  color: black;
-}
-.download:hover:before {
-  animation: glitch-test 1.5s infinite linear alternate-reverse;
-}
-.download:hover:after {
-  -webkit-animation: glitch-test 2s infinite linear alternate;
-  animation: glitch-test 2s infinite linear alternate;
-}
-@-webkit-keyframes glitch-test {
-  0% {
-    clip: rect(-3px, 600px, 0px, 0px);
-  }
-  5.88235% {
-    clip: rect(0px, 600px, 0px, 0px);
-  }
-  11.76471% {
-    clip: rect(-3px, 600px, 0px, 0px);
-  }
-  17.64706% {
-    clip: rect(-3px, 600px, 0px, 0px);
-  }
-  23.52941% {
-    clip: rect(100px, 600px, 100px, 0px);
-  }
-  29.41176% {
-    clip: rect(0px, 600px, 600px, 0px);
-  }
-  35.29412% {
-    clip: rect(100px, 600px, 0px, 0px);
-  }
-  41.17647% {
-    clip: rect(0px, 600px, 600px, 0px);
-  }
-  47.05882% {
-    clip: rect(100px, 600px, 0px, 0px);
-  }
-  52.94118% {
-    clip: rect(-3px, 600px, 0px, 0px);
-  }
-  58.82353% {
-    clip: rect(100px, 450px, 100px, 0px);
-  }
-  64.70588% {
-    clip: rect(0px, 450px, 0px, 0px);
-  }
-  70.58824% {
-    clip: rect(100px, 450px, 100px, 0px);
-  }
-  76.47059% {
-    clip: rect(0px, 450px, 0px, 0px);
-  }
-  82.35294% {
-    clip: rect(0px, 450px, 0px, 0px);
-  }
-  88.23529% {
-    clip: rect(0px, 450px, 0px, 0px);
-  }
-  94.11765% {
-    clip: rect(0px, 450px, 0px, 0px);
-  }
-  100% {
-    clip: rect(0px, 450px, 0px, 0px);
-  }
-}
-@keyframes glitch-test {
-  0% {
-    clip: rect(-3px, 600px, 0px, 0px);
-  }
-  5.88235% {
-    clip: rect(0px, 600px, 0px, 0px);
-  }
-  11.76471% {
-    clip: rect(-3px, 600px, 0px, 0px);
-  }
-  17.64706% {
-    clip: rect(-3px, 600px, 0px, 0px);
-  }
-  23.52941% {
-    clip: rect(100px, 600px, 100px, 0px);
-  }
-  29.41176% {
-    clip: rect(0px, 600px, 600px, 0px);
-  }
-  35.29412% {
-    clip: rect(100px, 600px, 0px, 0px);
-  }
-  41.17647% {
-    clip: rect(0px, 600px, 600px, 0px);
-  }
-  47.05882% {
-    clip: rect(100px, 600px, 0px, 0px);
-  }
-  52.94118% {
-    clip: rect(-3px, 600px, 0px, 0px);
-  }
-  58.82353% {
-    clip: rect(100px, 450px, 100px, 0px);
-  }
-  64.70588% {
-    clip: rect(0px, 450px, 0px, 0px);
-  }
-  70.58824% {
-    clip: rect(100px, 450px, 100px, 0px);
-  }
-  76.47059% {
-    clip: rect(0px, 450px, 0px, 0px);
-  }
-  82.35294% {
-    clip: rect(0px, 450px, 0px, 0px);
-  }
-  88.23529% {
-    clip: rect(0px, 450px, 0px, 0px);
-  }
-  94.11765% {
-    clip: rect(0px, 450px, 0px, 0px);
-  }
-  100% {
-    clip: rect(0px, 450px, 0px, 0px);
-  }
-}
-
-
-
-
-
 
 
 
@@ -515,48 +368,93 @@ a {
   .wrapper-bio {
     flex-direction: column;
     align-items: center;
-    top: 0;
+    margin: 0;
   }
   .text {
     padding: 20px;
   }
+  .text > p {
+    margin-bottom: 20px;
+  }
+  
   .experience {
     flex-direction: column;
-    top: 0;
-  }
+    margin: 0;
+    padding: 0 20px;
+  } 
   .word-experience > h1 {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  .skills {
+    padding: 0;
+    justify-content: flex-end;
   }
 
   .education {
     flex-direction: column-reverse;
-    top: 0;
+    margin: 0;
+  }
+  .word-education {
+    right: 0;
+    position: relative;
+    padding: 0 20px;
+    margin-right: -30px;
   }
   .word-education > h1 {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
   }
   .knowledge {
-    padding: 20px;
+    padding-left: 20px;
   }
 
   .interests {
     flex-direction: column;
-    top: 0;
+    margin: 0;
   }
   
+  .word-interests {
+    padding: 0 20px;
+  }
+  .hobbies {
+    justify-content: flex-end;
+  }
+ 
   .word-interests > h1 {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
   }
 
   .contact {
     flex-direction: column-reverse;
-    top: 0;
+    margin: 0;
+  }
+  .word-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 20px 0 0 0;
   }
   .word-contact > h1 {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  .content-contact > p {
+    padding: 20px;
+  }
+  .content-contact > section {
+    padding: 20px;
   }
   .content-contact {
-    padding: 20px;
+    padding: 0;
+  }
+  .contact-me-wrapper {
+    padding: 0 20px;
   }
 
 }
